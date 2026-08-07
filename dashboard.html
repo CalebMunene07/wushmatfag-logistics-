@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard | Paramount Logistics</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="images/favicon.ico">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+</head>
+<body class="no-hero">
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <span class="brand-logo-wrap">
+        <img src="images/logo.png" alt="" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <span class="brand-mark" style="display:none;"></span>
+      </span>
+      <span class="brand-name">WUSHMAT FAG LTD</span>
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html" data-page="index.html">Home</a>
+      <a href="index.html#services">Services</a>
+      <a href="track.html" data-page="track.html">Track & Trace</a>
+      <a href="quote.html" data-page="quote.html">Get a Quote</a>
+      <a href="contact.html" data-page="contact.html">Contact</a>
+      <span id="nav-auth-slot"></span>
+    </div>
+  </nav>
+</header>
+
+<main class="dash-wrap">
+  <h1>Client Dashboard</h1>
+
+  <section class="dash-section">
+    <h2>Your Shipments</h2>
+    <div id="shipments-panel" class="list-panel"><p class="empty-note" style="padding-left:20px;">Loading...</p></div>
+  </section>
+
+  <section class="dash-section">
+    <h2>Your Quote Requests</h2>
+    <div id="quotes-panel" class="list-panel"><p class="empty-note" style="padding-left:20px;">Loading...</p></div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
