@@ -770,7 +770,7 @@ section { padding: 88px 0; }
 }
 
 .brand-logo {
-  height: 100px;
+  height: 80px;
   width: auto;
    border-radius: 70%;
   border: 2px solid #fff; /* Optional border */
@@ -778,7 +778,7 @@ section { padding: 88px 0; }
   display: block;
 }
 .brand-logo-footer {
-  height: 90px;
+  height: 60px;
 }
 .brand-fallback {
   display: none;
