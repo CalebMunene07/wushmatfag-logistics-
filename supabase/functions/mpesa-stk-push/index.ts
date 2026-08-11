@@ -5,9 +5,16 @@
 //   MPESA_CONSUMER_KEY, MPESA_CONSUMER_SECRET, MPESA_SHORTCODE,
 //   MPESA_PASSKEY, MPESA_CALLBACK_URL
 // Sign up for Daraja API credentials at https://developer.safaricom.co.ke
+//
+// NOTE: MPESA_SHORTCODE (4749207) is a TILL / Buy Goods number, not a
+// Paybill — TransactionType must be CustomerBuyGoodsOnline. Using
+// CustomerPayBillOnline against a Till number causes Daraja to accept the
+// initial request but then fail silently (no prompt ever reaches the
+// phone, callback comes back with a generic error instead of a real
+// success/failure).
 // ============================================================================
 import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
-const BASE_URL = "https://sandbox.safaricom.co.ke"; // switch to https://api.safaricom.co.ke in production
+const BASE_URL = "https://api.safaricom.co.ke"; // PRODUCTION
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -58,14 +65,14 @@ serve(async (req) => {
         BusinessShortCode: shortcode,
         Password: password,
         Timestamp: timestamp,
-        TransactionType: "CustomerPayBillOnline",
+        TransactionType: "CustomerBuyGoodsOnline", // Till/Buy Goods — was CustomerPayBillOnline
         Amount: amount,
         PartyA: normalizedPhone,
         PartyB: shortcode,
         PhoneNumber: normalizedPhone,
         CallBackURL: callbackUrl,
-        AccountReference: account_ref || "PARAMOUNT",
-        TransactionDesc: "Paramount Logistics quote processing fee",
+        AccountReference: account_ref || "WUSHMAT",
+        TransactionDesc: "Wushmat FAG Ltd quote processing fee",
       }),
     });
     const stkData = await stkRes.json();
