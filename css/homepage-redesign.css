@@ -1481,4 +1481,42 @@ body.hero-nav-scrolled .site-header .nav{
   .container-card-panel { padding: 20px; }
 }
 
+/* ============================================================================
+   FIX: tagline strip colliding with hero action buttons
+   Root cause: .hero-route-strip is position:absolute at the bottom of
+   .hero, but on narrower viewports the hero-copy stack (tags/title/
+   paragraph/buttons) is taller than the space reserved above it, so the
+   two overlap. Reserve real space for the strip via padding instead of
+   trusting min-height alone, and shrink the stack a bit at this width.
+   ============================================================================ */
+
+@media (max-width: 900px) {
+  .hero-slideshow {
+    padding-bottom: 150px !important; /* clears tagline + route track fully */
+  }
+  .hero-route-strip {
+    padding: 10px 5% 16px;
+  }
+  .hero-route-tagline {
+    font-size: 0.7rem;
+    margin-bottom: 6px;
+  }
+  .hero-copy {
+    gap: 12px;
+  }
+  .hero-copy p {
+    font-size: 14px;
+  }
+  .hero-copy .hero-actions .btn {
+    padding: 10px 18px;
+    font-size: 13.5px;
+  }
+}
+
+@media (max-width: 620px) {
+  /* If the strip still can't fit cleanly, drop it rather than overlap */
+  .hero-route-strip { display: none; }
+  .hero-slideshow { padding-bottom: 50px !important; }
+}
+
 /* End of homepage overrides. */
