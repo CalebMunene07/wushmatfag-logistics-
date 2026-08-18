@@ -265,13 +265,8 @@ body.no-hero .site-header {
   object-position: center;
   z-index: -2;
 }
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(16, 52, 166, 0.68);
-  z-index: -1;
-}
+/* Tint overlay removed — hero text now carries its own contrast via
+   text-shadow instead of a color wash over the photo. */
 .hero-glass {
   max-width: 700px;
   margin: 0 auto;
@@ -297,20 +292,26 @@ body.no-hero .site-header {
   object-position: center;
   z-index: -2;
 }
-.page-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(16, 52, 166, 0.68);
-  z-index: -1;
-}
+/* Tint overlay removed — same treatment as .hero above. */
 .page-hero-glass {
   max-width: 560px;
   margin: 0 auto;
   padding: 26px 32px;
 }
-.page-hero h1 { font-size: clamp(28px, 4vw, 38px); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 10px; }
-.page-hero p { color: var(--white); opacity: 0.92; margin: 0; font-size: 15.5px; }
+.page-hero h1 {
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.35), 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+.page-hero p {
+  color: var(--white);
+  opacity: 0.92;
+  margin: 0;
+  font-size: 15.5px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
 .eyebrow {
   display: inline-block;
   font-size: 12px;
@@ -328,13 +329,15 @@ body.no-hero .site-header {
   font-weight: 800;
   letter-spacing: -0.03em;
   margin: 0 0 18px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.35), 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 .hero p {
   color: var(--white);
-  opacity: 0.85;
+  opacity: 0.92;
   max-width: 620px;
   margin: 0 auto 34px;
   font-size: 17px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
@@ -597,31 +600,87 @@ section { padding: 88px 0; }
 .list-row .secondary { font-size: 13px; color: var(--slate-500); margin-top: 2px; }
 .empty-note { color: var(--slate-500); font-size: 14px; padding: 20px 0; }
 
-/* ---------- Footer ---------- */
+/* ---------- Footer ----------
+   Single source of truth for all footer styling — do not redeclare
+   .site-footer / .footer-grid / .footer-bottom in any other stylesheet.
+   Two-part layout:
+   - .footer-grid ("top footer") sits directly on the navy .site-footer
+     background with no panel of its own — headings/links are tinted
+     frost/ice blue for contrast instead of a glass card.
+   - .footer-bottom ("bottom footer") is a solid brand-red strip with
+     curved top corners, sitting flush at the base of the footer. */
 .site-footer {
+  position: relative;
+  overflow: hidden;
   background: var(--navy-950);
   color: var(--white);
-  padding: 64px 24px 32px;
-  margin-top: 100px;
+  border-radius: 24px 24px 0 0;
+  padding: 22px 20px 0;
+  margin-top: 36px;
+  isolation: isolate;
 }
+.site-footer-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.site-footer-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(16, 52, 166, 0.92), rgba(16, 52, 166, 0.98));
+}
+
+/* Top footer — frost/ice blue, no background panel */
 .footer-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: 16px;
   max-width: 1120px;
-  margin: 0 auto 40px;
+  margin: 0 auto;
+  padding: 20px 24px;
 }
-@media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-.footer-grid h4 { color: var(--white); font-size: 14px; margin: 0 0 16px; }
+.footer-grid h4 {
+  color: var(--frost-1, rgba(234, 246, 251, 0.92));
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 0 0 8px;
+}
 .footer-grid ul { list-style: none; padding: 0; margin: 0; }
-.footer-grid li { margin-bottom: 10px; font-size: 14px; opacity: 0.75; }
+.footer-grid li {
+  margin: 0 0 5px;
+  font-size: 12.5px;
+  color: var(--frost-1, rgba(234, 246, 251, 0.68));
+  opacity: 0.82;
+}
 .footer-grid li a:hover { opacity: 1; color: var(--amber-500); }
+
+/* Bottom footer — solid red strip, curved top corners, flush to the page edge */
 .footer-bottom {
-  max-width: 1120px; margin: 0 auto;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 24px;
-  font-size: 13px; opacity: 0.6;
+  position: relative;
+  z-index: 1;
+  margin: 16px -20px 0;
+  padding: 10px 20px;
+  background: var(--amber-500);
+  border-radius: 14px 14px 0 0;
+  font-size: 12px;
+  color: var(--white);
   text-align: center;
+}
+@media (max-width: 760px) {
+  .site-footer { padding: 18px 16px 0; margin-top: 28px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 14px 18px; padding: 16px 18px; }
+  .footer-bottom { margin: 14px -16px 0; padding: 9px 16px; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; }
 }
 
 /* ---------- Info grid (Contact info, etc.) ---------- */
@@ -770,15 +829,15 @@ section { padding: 88px 0; }
 }
 
 .brand-logo {
-  height: 80px;
+  height: 50px;
   width: auto;
-   border-radius: 70%;
+   border-radius: 50%;
   border: 2px solid #fff; /* Optional border */
   object-fit: cover;      /* Prevents image distortion */
   display: block;
 }
 .brand-logo-footer {
-  height: 60px;
+  height: 40px;
 }
 .brand-fallback {
   display: none;

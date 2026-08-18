@@ -1,0 +1,1484 @@
+/* ============================================================================
+   Homepage redesign additions — append to css/style.css (or link separately
+   after it). Uses only the existing brand variables already defined at the
+   top of style.css (--navy-950, --amber-500, etc.) — no new colors.
+   ============================================================================ */
+
+/* ---------- Hero floating stat card ---------- */
+.hero { padding-bottom: 70px; }
+.hero-float-card {
+  position: relative;
+  z-index: 2;
+  max-width: 300px;
+  margin: 36px auto 0;
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 14px;
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: var(--shadow-lg);
+}
+.hero-float-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: var(--amber-500);
+  color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 18px;
+  flex-shrink: 0;
+}
+.hero-float-value { font-size: 22px; font-weight: 800; color: var(--navy-950); line-height: 1; }
+.hero-float-label { font-size: 12.5px; color: var(--slate-500); margin-top: 3px; }
+
+/* ---------- Quick service strip (below hero) ---------- */
+.quick-strip {
+  background: var(--white);
+  border-bottom: 1px solid var(--slate-200);
+  padding: 0;
+}
+.quick-strip-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 22px 24px;
+}
+.quick-strip-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--navy-950);
+  border: 1px solid var(--slate-200);
+  transition: all 0.2s ease;
+}
+.quick-strip-item:hover {
+  background: var(--navy-950);
+  color: var(--white);
+  border-color: var(--navy-950);
+  transform: translateY(-2px);
+}
+.quick-strip-icon {
+  width: 24px; height: 24px;
+  border-radius: 6px;
+  background: var(--navy-950);
+  color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 800;
+  flex-shrink: 0;
+}
+.quick-strip-item:hover .quick-strip-icon { background: var(--amber-500); }
+
+/* ---------- About section badge + mini stats ---------- */
+.about-stat-badge {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background: var(--navy-950);
+  color: var(--white);
+  border-radius: 14px;
+  padding: 18px 24px;
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+}
+.about-stat-value { font-size: 30px; font-weight: 800; line-height: 1; }
+.about-stat-label { font-size: 11.5px; opacity: 0.85; margin-top: 4px; white-space: nowrap; }
+@media (max-width: 560px) {
+  .about-stat-badge { position: static; margin-top: 14px; display: inline-block; }
+}
+
+.about-mini-stats {
+  display: flex;
+  gap: 36px;
+  margin: 22px 0 24px;
+  padding-top: 22px;
+  border-top: 1px solid var(--slate-200);
+}
+.about-mini-value { font-size: 28px; font-weight: 800; color: var(--amber-500); line-height: 1; }
+.about-mini-label { font-size: 13px; color: var(--slate-500); margin-top: 4px; }
+
+/* ---------- Progress bars (Why Choose Us rates) ---------- */
+.progress-list { display: flex; flex-direction: column; gap: 20px; }
+.progress-item-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--slate-900);
+  margin-bottom: 8px;
+}
+.progress-value { color: var(--amber-500); }
+.progress-track {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--slate-100);
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--navy-900), var(--amber-500));
+  transition: width 1.2s cubic-bezier(.2,.8,.2,1);
+}
+
+/* ---------- Stats band ---------- */
+.stats-band {
+  background: var(--navy-950);
+  padding: 60px 0;
+}
+.stats-band-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  text-align: center;
+}
+@media (max-width: 760px) { .stats-band-grid { grid-template-columns: repeat(2, 1fr); } }
+.stats-band-value {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1;
+}
+.stats-band-label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 8px;
+}
+
+/* ---------- Moving truck strip ---------- */
+.truck-strip {
+  position: relative;
+  background: var(--navy-950);
+  overflow: hidden;
+  height: 64px;
+}
+.truck-strip::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 14px;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,0.35) 0 24px, transparent 24px 44px);
+}
+.truck-strip-vehicle {
+  position: absolute;
+  bottom: 8px;
+  left: -140px;
+  animation: truck-drive 14s linear infinite;
+}
+@keyframes truck-drive {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(100vw + 160px)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .truck-strip-vehicle { animation: none; left: 40%; }
+}
+
+/* ---------- Floating container accents ---------- */
+.float-container {
+  position: absolute;
+  animation: container-float 5s ease-in-out infinite;
+  pointer-events: none;
+  opacity: 0.9;
+  z-index: 3;
+}
+@keyframes container-float {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-14px) rotate(2deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .float-container { animation: none; }
+}
+.hero .float-container.fc-1 { top: 14%; right: 6%; animation-delay: 0s; display: none; }
+.hero .float-container.fc-2 { top: 62%; right: 2%; animation-delay: 1.2s; display: none; }
+@media (min-width: 900px) {
+  .hero .float-container.fc-1, .hero .float-container.fc-2 { display: block; }
+}
+.section-head { position: relative; }
+.section-head .float-container.fc-corner {
+  top: -18px;
+  right: calc(50% - 240px);
+  animation-delay: 0.6s;
+  display: none;
+}
+@media (min-width: 760px) {
+  .section-head .float-container.fc-corner { display: block; }
+}
+
+/* ---------- Container-styled testimonial cards ---------- */
+.container-card {
+  position: relative;
+  border-radius: 10px;
+  padding: 22px 22px 24px;
+  overflow: hidden;
+  color: var(--white);
+  box-shadow: var(--shadow);
+}
+.container-card.c-navy { background: var(--navy-950); }
+.container-card.c-red { background: var(--amber-500); }
+.container-card::before,
+.container-card::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  height: 10px;
+  background: repeating-linear-gradient(90deg,
+    rgba(0,0,0,0.18) 0 6px, rgba(255,255,255,0.1) 6px 12px);
+}
+.container-card::before { top: 0; }
+.container-card::after { bottom: 0; }
+.container-card .corner-bolt {
+  position: absolute;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.28);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.25);
+}
+.container-card .corner-bolt.tl { top: 14px; left: 10px; }
+.container-card .corner-bolt.tr { top: 14px; right: 10px; }
+.container-card .corner-bolt.bl { bottom: 14px; left: 10px; }
+.container-card .corner-bolt.br { bottom: 14px; right: 10px; }
+.container-card .door-seam {
+  position: absolute;
+  top: 10px; bottom: 10px;
+  left: 50%;
+  width: 1px;
+  background: rgba(0,0,0,0.15);
+}
+.container-card-panel {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 8px;
+  padding: 20px 20px 18px;
+  margin-top: 4px;
+  color: var(--slate-900);
+}
+.container-card-panel .quote-text {
+  font-style: italic;
+  color: var(--slate-700);
+  margin: 0 0 14px;
+  font-size: 14.5px;
+}
+.container-card-panel .quote-author { font-weight: 700; font-size: 14px; }
+.container-card-panel .quote-role { color: var(--slate-500); font-size: 12.5px; }
+.container-card-tag {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 8px;
+}
+.tracking-band {
+  position: relative;
+  background-color: var(--navy-950);
+  padding: 90px 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+.tracking-band-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -2;
+  opacity: 0.35;
+}
+.tracking-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(16, 52, 166, 0.75);
+  z-index: -1;
+}
+.tracking-band-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+@media (max-width: 860px) { .tracking-band-inner { grid-template-columns: 1fr; } }
+.tracking-band-copy .eyebrow { background: rgba(215, 38, 61, 0.18); }
+.tracking-band-copy h2 { color: var(--white); font-size: clamp(24px, 3vw, 32px); font-weight: 800; margin: 0 0 12px; }
+.tracking-band-copy p { color: rgba(255, 255, 255, 0.82); margin: 0; font-size: 15.5px; }
+.tracking-band-form {
+  display: flex;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.97);
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  flex-wrap: wrap;
+}
+.tracking-band-form input {
+  flex: 1;
+  min-width: 200px;
+  border: none;
+  padding: 12px 14px;
+  font-size: 14.5px;
+  font-family: inherit;
+  border-radius: 8px;
+  background: var(--slate-50);
+}
+.tracking-band-form input:focus { outline: 2px solid var(--navy-700); }
+.tracking-band-form .btn { padding: 12px 22px; }
+
+/* ---------- Top info bar ---------- */
+.top-bar {
+  background: #0b1f5c;
+  color: rgba(255,255,255,0.85);
+  font-size: 12.5px;
+  padding: 8px 24px;
+}
+.top-bar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.top-bar-left, .top-bar-right { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.top-bar-item { display: flex; align-items: center; gap: 6px; color: inherit; white-space: nowrap; }
+.top-bar-item svg { flex-shrink: 0; opacity: 0.8; }
+.top-bar-item:hover { color: #1e12c7; }
+.top-bar-cta { color: var(--amber-500); font-weight: 700; }
+.top-bar-cta:hover { color: #ff5468; }
+@media (max-width: 760px) { .top-bar-hours { display: none; } }
+@media (max-width: 560px) { .top-bar { display: none; } }
+
+/* ---------- Hero slideshow ---------- */
+.hero-slideshow { padding-top: calc(var(--header-h, 96px) + 50px); }
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  opacity: 0;
+  overflow: hidden;
+  animation: hero-crossfade 18s infinite;
+}
+.hero-slide img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  animation: hero-kenburns 18s infinite;
+}
+.hero-slide-1 { animation-delay: 0s; }
+.hero-slide-2 { animation-delay: 6s; }
+.hero-slide-3 { animation-delay: 12s; }
+.hero-slide-1 img { animation-delay: 0s; }
+.hero-slide-2 img { animation-delay: 6s; }
+.hero-slide-3 img { animation-delay: 12s; }
+@keyframes hero-crossfade {
+  0%, 2% { opacity: 0; }
+  6%, 30% { opacity: 1; }
+  34%, 100% { opacity: 0; }
+}
+@keyframes hero-kenburns {
+  0% { transform: scale(1); }
+  33.33% { transform: scale(1.08); }
+  100% { transform: scale(1.08); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide, .hero-slide img { animation: none; }
+  .hero-slide-1 { opacity: 1; }
+}
+
+.hero-anim-in { animation: hero-fade-up 0.8s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) { .hero-anim-in { animation: none; } }
+
+/* ---------- About section ---------- */
+#about-section { padding: 100px 0; }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 60px;
+  align-items: center;
+}
+@media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+.about-image-side { position: relative; padding: 20px 40px 40px 0; }
+.about-main-photo {
+  border-radius: 16px;
+  overflow: hidden;
+  height: 420px;
+  box-shadow: var(--shadow-lg);
+}
+.about-main-photo img { width: 100%; height: 100%; object-fit: cover; }
+.about-circle-photo {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 6px solid var(--white);
+  box-shadow: var(--shadow-lg);
+}
+.about-circle-photo img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 560px) {
+  .about-circle-photo { width: 140px; height: 140px; border-width: 4px; }
+  .about-image-side { padding-right: 0; }
+}
+.about-float-container {
+  position: absolute;
+  top: -26px;
+  right: 20px;
+  width: 130px;
+  z-index: 2;
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.25));
+  animation: about-container-float 5s ease-in-out infinite;
+}
+@keyframes about-container-float {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+@media (prefers-reduced-motion: reduce) { .about-float-container { animation: none; } }
+.about-ribbon {
+  position: absolute;
+  left: 0; bottom: 40px;
+  background: var(--amber-500);
+  color: var(--white);
+  font-weight: 800;
+  font-size: 13.5px;
+  padding: 12px 22px;
+  border-radius: 0 8px 8px 0;
+  box-shadow: var(--shadow-lg);
+}
+
+.about-copy-side p { color: var(--slate-600); font-size: 15.5px; margin: 14px 0 26px; }
+.about-copy-side h2 { font-size: clamp(26px, 3vw, 34px); font-weight: 800; letter-spacing: -0.02em; margin: 8px 0 0; }
+.about-checklist {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 24px;
+  margin-bottom: 30px;
+}
+.about-checklist-item { font-weight: 700; font-size: 14.5px; color: var(--slate-900); }
+@media (max-width: 480px) { .about-checklist { grid-template-columns: 1fr; } }
+.about-cta-row { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+.about-phone { display: flex; align-items: center; gap: 12px; }
+.about-phone-icon {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: var(--navy-950);
+  color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.about-phone-label { font-size: 12px; color: var(--slate-500); }
+.about-phone-value { font-weight: 800; font-size: 15px; color: var(--navy-950); }
+
+/* ---------- Scrolling marquee ticker ---------- */
+.marquee-band {
+  background: var(--white);
+  border-top: 1px solid var(--slate-200);
+  border-bottom: 1px solid var(--slate-200);
+  overflow: hidden;
+  padding: 16px 0;
+}
+.marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  white-space: nowrap;
+  width: max-content;
+  animation: marquee-scroll 28s linear infinite;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 0.01em;
+}
+.marquee-track span:not(.dot) { color: var(--navy-950); }
+.marquee-track span.outline { color: transparent; -webkit-text-stroke: 1.5px var(--amber-500); }
+.marquee-track .dot { color: var(--amber-500); font-size: 14px; }
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+/* ---------- Swinging container rig ---------- */
+.swing-rig {
+  position: relative;
+  height: 260px;
+  background: var(--slate-50);
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+.swing-cable-mount {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 60px; height: 14px;
+  background: var(--navy-950);
+  border-radius: 0 0 6px 6px;
+}
+.swing-pendulum {
+  position: relative;
+  top: 14px;
+  transform-origin: top center;
+  animation: swing-pendulum 4.5s ease-in-out infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@keyframes swing-pendulum {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+@media (prefers-reduced-motion: reduce) { .swing-pendulum { animation: none; } }
+.swing-cable { display: none; }
+.swing-hook {
+  width: 2px; height: 46px;
+  background: var(--slate-500);
+  display: block;
+}
+.swing-container-photo {
+  width: 220px; height: 140px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 3px solid var(--navy-950);
+}
+.swing-container-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ============================================================================
+   PATCH — TOP BAR + HERO ANIMATION + ABOUT CONTAINER RIGHT COLUMN
+   ============================================================================ */
+
+/* ── FIX 1: Top bar above navbar ── */
+/* ============================================================================
+   WUSHMAT TOP BAR — TRANSPARENT
+   ============================================================================ */
+
+.top-bar {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: transparent !important;
+  color: #e61818;
+  padding: 10px 24px;
+  z-index: 500;
+  border: none;
+  box-shadow: none;
+}
+
+.top-bar-inner {
+  width: min(1240px, 92%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.top-bar-left,
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.top-bar-item {
+  color: rgba(255,255,255,.9) !important;
+  text-decoration: none;
+  transition: color .25s ease, opacity .25s ease;
+}
+
+.top-bar-item:hover {
+  color: #ffffff !important;
+  opacity: 1;
+}
+
+/* ==========================================================
+   LANGUAGE
+   ========================================================== */
+
+.lang-dropdown {
+  position: relative;
+  z-index: 600;
+}
+
+.lang-dropdown-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 0;
+  border: 0;
+  background: transparent !important;
+  color: #ffffff !important;
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+}
+
+.lang-dropdown-btn:hover {
+  color: var(--amber-500) !important;
+}
+
+.lang-dropdown-btn:focus-visible {
+  outline: 2px solid var(--amber-500);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.lang-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 165px;
+  margin: 0;
+  padding: 7px;
+  list-style: none;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 18px 45px rgba(0,0,0,.18);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+  z-index: 1000;
+}
+
+.lang-dropdown-menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.lang-dropdown-menu li {
+  margin: 0;
+}
+
+.lang-dropdown-menu button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 11px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--slate-900);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease;
+}
+
+.lang-dropdown-menu button:hover {
+  background: var(--slate-50);
+  color: var(--amber-500);
+}
+
+.lang-flag {
+  font-size: 15px;
+  line-height: 1;
+}
+
+/* ==========================================================
+   SOCIAL MEDIA
+   ========================================================== */
+
+.top-bar-socials {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 600;
+}
+
+.top-bar-social {
+  width: 29px;
+  height: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,.10);
+  color: #ffffff !important;
+  text-decoration: none;
+  transition: transform .25s ease, background .25s ease, color .25s ease;
+}
+
+.top-bar-social:hover {
+  background: var(--amber-500);
+  color: #ffffff !important;
+  transform: translateY(-3px);
+}
+
+.top-bar-social svg {
+  pointer-events: none;
+}
+
+/* ==========================================================
+   HEADER
+   ========================================================== */
+
+.site-header {
+  position: absolute !important;
+  top: var(--topbar-h, 40px);
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 400;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+body.scrolled-past-topbar .site-header {
+  position: fixed !important;
+  top: 0;
+  background: rgba(13, 31, 54, 0.96) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* ==========================================================
+   HERO WATERMARK — FULL WIDTH CENTER
+   ========================================================== */
+
+.hero-watermark {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+.hero-watermark span {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: max-content !important;
+  max-width: none !important;
+  transform: translate(-50%, -50%) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: clamp(90px, 15vw, 210px) !important;
+  font-weight: 900 !important;
+  line-height: .85 !important;
+  letter-spacing: .04em !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+  color: rgba(255,255,255,.065) !important;
+  user-select: none !important;
+}
+
+/* Make sure hero content stays above watermark */
+
+.hero-glass,
+.hero-float-card,
+.hero-slide-dots {
+  position: relative;
+  z-index: 5;
+}
+
+/* ==========================================================
+   MOBILE TOP BAR
+   ========================================================== */
+
+@media (max-width: 760px) {
+  .top-bar { padding: 8px 15px; }
+  .top-bar-inner { width: 100%; justify-content: flex-end; }
+  .top-bar-left { display: none; }
+  .top-bar-right { gap: 13px; }
+  .top-bar-social { width: 27px; height: 27px; }
+}
+
+@media (max-width: 560px) {
+  .top-bar { display: flex !important; }
+  .top-bar-inner { justify-content: flex-end; }
+  .top-bar-socials { gap: 6px; }
+}
+
+.hero-glass {
+  position: relative;
+  z-index: 1;
+}
+@keyframes hero-line-up {
+  from { opacity: 0; transform: translateY(36px); filter: blur(2px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0);   }
+}
+.hero-glass .eyebrow      { animation: hero-line-up 0.7s cubic-bezier(.2,.8,.2,1) 0.10s both; }
+.hero-glass h1             { animation: hero-line-up 0.8s cubic-bezier(.2,.8,.2,1) 0.28s both; }
+.hero-glass p              { animation: hero-line-up 0.8s cubic-bezier(.2,.8,.2,1) 0.46s both; }
+.hero-glass .hero-actions  { animation: hero-line-up 0.7s cubic-bezier(.2,.8,.2,1) 0.62s both; }
+.hero-float-card           { animation: hero-line-up 0.7s cubic-bezier(.2,.8,.2,1) 0.76s both; }
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-glass .eyebrow,
+  .hero-glass h1,
+  .hero-glass p,
+  .hero-glass .hero-actions,
+  .hero-float-card { animation: none; }
+}
+/* About section becomes the positioning reference */
+#about-section {
+  position: relative;
+  padding: 100px 0;
+  overflow: visible;
+}
+
+/* Floating container: TOP-RIGHT of the entire About section */
+#about-section .about-container-col {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  width: 110px;
+  height: auto;
+  display: block;
+  z-index: 20;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container image */
+#about-section .about-container-col img {
+  display: block;
+  width: 110px;
+  max-width: 110px;
+  height: auto;
+  margin: 0;
+  transform-origin: 50% 0;
+  animation: about-container-swing 4.5s ease-in-out infinite;
+  filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.28));
+}
+
+/* Hanging swing */
+@keyframes about-container-swing {
+  0% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+  100% { transform: rotate(-5deg); }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  #about-section .about-container-col { top: 10px; right: 10px; width: 75px; }
+  #about-section .about-container-col img { width: 70px; max-width: 70px; }
+}
+@keyframes about-container-float {
+  0%,100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-14px) rotate(2deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-container-col img { animation: none; }
+}
+@media (max-width: 1000px) {
+  .about-grid { grid-template-columns: 1fr 1fr !important; }
+  .about-container-col { grid-column: 1 / -1; flex-direction: row; justify-content: center; }
+  .about-container-col img { max-width: 180px; }
+}
+@media (max-width: 680px) {
+  .about-grid { grid-template-columns: 1fr !important; }
+  .about-container-col { grid-column: 1; }
+}
+
+/* ============================================================================
+   HERO LAYOUT — plain tag row, left-aligned copy over the photo.
+   ============================================================================ */
+
+.hero-main {
+  position: relative;
+  z-index: 5;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.hero-copy { max-width: 640px; }
+
+/* Sea | Air | Road | Customs tag row */
+.hero-tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 22px;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.hero-tags span { display: inline-flex; align-items: center; gap: 6px; }
+.hero-tag-sep { opacity: 0.4; font-weight: 400; }
+
+.hero-copy p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 16.5px;
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 0 0 30px;
+}
+
+.hero-copy .hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+.hero-copy .hero-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ============================================================================
+   HERO REFRESH — overlay removed, copy pulled down so the big "LOGISTICS"
+   watermark reads clearly behind it, staggered reveal on load.
+   ============================================================================ */
+
+/* .hero-overlay is no longer used in the markup; this hides it if any
+   template/page still includes the old markup, so nothing breaks. */
+.hero-overlay { display: none !important; }
+
+/* Push the copy block further down the hero so more of the watermark shows */
+.hero-slideshow { padding-top: calc(var(--header-h, 96px) + 130px); }
+.hero { padding-bottom: 100px; }
+
+.hero-main { display: flex; }
+.hero-copy { max-width: 620px; }
+
+/* Plain-text tag row (icons removed) */
+.hero-tags {
+  color: #91c2f3;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  margin-bottom: 20px;
+}
+.hero-tags span { gap: 0; }
+.hero-tag-sep { color: rgba(145, 194, 243, 0.5); }
+
+.hero-copy p { margin-bottom: 28px; }
+.hero-copy .hero-actions { margin-bottom: 0; }
+
+/* ---------- Staggered reveal animation (tags / paragraph / buttons) ---------- */
+.hero-reveal {
+  opacity: 0;
+  animation: hero-reveal-in 0.9s cubic-bezier(.2,.75,.25,1) both;
+}
+@keyframes hero-reveal-in {
+  0% { opacity: 0; transform: translateY(28px); filter: blur(6px); }
+  60% { filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+.hero-tags.hero-reveal { letter-spacing: 0.28em; animation-name: hero-reveal-tags; }
+@keyframes hero-reveal-tags {
+  0% { opacity: 0; letter-spacing: 0.4em; transform: translateY(10px); }
+  100% { opacity: 1; letter-spacing: 0.12em; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-reveal { animation: none; opacity: 1; }
+}
+
+@media (max-width: 760px) {
+  .hero-slideshow { padding-top: calc(var(--header-h, 96px) + 70px); }
+  .hero { padding-bottom: 70px; }
+}
+
+/* ============================================================================
+   HERO TITLE — gradient-fill "fancy" text with typing animation.
+   Replaces the old .hero-overlay gradient wash: the title itself now
+   carries the contrast against the photo via a drop-shadow stack, so no
+   dark scrim is needed over the hero image.
+   ============================================================================ */
+
+.hero-title {
+  position: relative;
+  color: var(--white);
+  font-size: clamp(38px, 5.4vw, 62px);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin: 0 0 18px;
+  min-height: 2.2em; /* reserves space so the layout doesn't jump while typing */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.45), 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.type-target { display: inline; white-space: pre-wrap; }
+
+/* Blinking type cursor */
+.type-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.8em;
+  background: var(--amber-500);
+  margin-left: 5px;
+  vertical-align: -0.05em;
+  box-shadow: 0 0 10px rgba(215, 38, 61, 0.5);
+  animation: blink-cursor 0.85s step-end infinite;
+}
+.hero-title.typing-done .type-cursor {
+  animation:
+    blink-cursor 0.85s step-end infinite 1.2s 3,
+    fade-cursor 0.4s ease forwards 3.55s;
+}
+
+@keyframes fade-cursor { to { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .type-cursor { animation: none; opacity: 0; }
+}
+
+/* ============================================================================
+   HERO + NAV REFRESH — appended by Claude
+   Everything below overrides the rules above it (source order + matching
+   !important weight where the original used !important). This is what
+   turns the nav into a floating translucent pill, replaces the blue hero
+   wash with a frost/ice wash, syncs the slideshow to the typewriter text,
+   centers the hero copy, swaps the watermark for an image, and adds the
+   bottom route strip.
+   ============================================================================ */
+
+:root{
+  --egyptian-blue: var(--navy-950, #0d31a8);       /* your real Egyptian blue */
+  --egyptian-blue-deep: #1738a7;                   /* darker computed shade, gradient depth only — not a new brand colour */
+  --brand-red: var(--amber-500, #d7263d);          /* your real red accent */
+  --frost-1: rgb(234, 246, 251);
+  --frost-2: rgba(6, 91, 189, 0.26);
+}
+
+/* ---------- Floating nav bar — translucent rounded rectangle, colours on scroll ---------- */
+.site-header{
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 16px 20px 0 !important;
+}
+
+.site-header .nav{
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 12px 22px;
+  border-radius: 26px; /* curved corners */
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+  transition: background .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+
+/* toggled by js/hero-nav-refresh.js on scroll */
+body.hero-nav-scrolled .site-header{
+  position: fixed !important;
+  top: 14px;
+  left: 0; right: 0;
+}
+body.hero-nav-scrolled .site-header .nav{
+  background: rgba(11, 36, 120, 0.62); /* egyptian blue glass */
+  border-color: rgba(255,255,255,0.16);
+  box-shadow: 0 12px 34px rgba(0,0,0,0.3);
+}
+
+/* ---------- Hero positioning context ---------- */
+.hero{ position: relative; overflow: hidden; }
+
+/* stop the old time-based crossfade; JS now owns slide switching so it
+   can stay perfectly in sync with the typewriter text */
+.hero-slide{
+  animation: none !important;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+.hero-slide.is-active{ opacity: 1; }
+.hero-slide img{
+  animation: none !important;
+  transform: scale(1.04);
+  transition: transform 7s ease-out;
+}
+.hero-slide.is-active img{ transform: scale(1.1); }
+
+/* ---------- Frost / ice overlay — replaces the blue wash on the slideshow ---------- */
+.hero-frost{
+  position: absolute;
+  inset: 0;
+  z-index: -1; /* above slides (-2), below watermark/content */
+  pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 50% 10%, var(--frost-1), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(8,20,38,0.55) 75%, rgba(8,20,38,0.82) 100%);
+}
+
+/* ---------- Watermark — real image instead of text ---------- */
+.hero-watermark{
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.hero-watermark img{
+  width: min(46vw, 520px);
+  height: auto;
+  opacity: 0.10;
+  filter: grayscale(1) brightness(3);
+  user-select: none;
+}
+
+/* ---------- Centered hero copy ---------- */
+.hero-main{ display: flex; justify-content: center; }
+.hero-copy{
+  max-width: 640px;
+  text-align: center;
+  margin: 0 auto;
+  opacity: 1;
+  transition: opacity .5s ease;
+}
+.hero-copy.is-fading{ opacity: 0; }
+.hero-tags{ justify-content: center; }
+.hero-copy p{ margin-left: auto; margin-right: auto; }
+.hero-copy .hero-actions{ justify-content: center; margin-bottom: 0; }
+
+/* ---------- Bottom route strip ---------- */
+.hero-route-strip{
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 6;
+  padding: 14px 5% 20px;
+  background: linear-gradient(180deg, transparent, rgba(6,14,28,0.6) 65%);
+}
+.hero-route-tagline{
+  font-size: 0.74rem;
+  letter-spacing: 0.03em;
+  color: rgba(255,255,255,0.75);
+  text-align: center;
+  margin: 0 0 10px;
+}
+.hero-route-tagline b{ color: #fff; font-weight: 600; }
+
+.hero-route-track{
+  position: relative;
+  max-width: 620px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hero-route-line{
+  position: absolute;
+  left: 0; right: 0; top: 50%;
+  height: 1px;
+  background-image: linear-gradient(90deg, rgba(255,255,255,0.35) 0 6px, transparent 6px 12px);
+  background-size: 12px 1px;
+  transform: translateY(-50%);
+}
+.hero-route-dot{
+  position: absolute;
+  top: 50%;
+  width: 6px; height: 6px;
+  background: var(--brand-red);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(200,16,46,0.25);
+  transform: translate(-50%,-50%);
+  animation: hero-route-travel 6s linear infinite;
+}
+@keyframes hero-route-travel{
+  0%{ left: 0%; }
+  100%{ left: 100%; }
+}
+.hero-route-track span{
+  position: relative;
+  z-index: 1;
+  font-size: 0.66rem;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.8);
+  background: #0b1524;
+  padding: 0 8px;
+}
+@media (max-width: 640px){
+  .hero-route-track span{ font-size: 0.58rem; padding: 0 4px; }
+  .hero-watermark img{ width: 70vw; }
+}
+@media (prefers-reduced-motion: reduce){
+  .hero-route-dot{ animation: none; left: 50%; }
+}
+
+/* ============================================================================
+   FOLLOW-UP FIXES — appended by Claude
+   1. Top bar was unreadable over bright hero photos — give it a permanent
+      dark scrim instead of staying fully transparent.
+   2. Hero tags: restore the full "Sea | Air | Road | Customs" row, styled
+      in Egyptian blue with a light halo so it stays legible on any photo.
+   3. Hero section made taller.
+   4. Hero copy switched to an explicit flex column with a fixed gap, so
+      the tag row / headline / paragraph / buttons stack cleanly instead
+      of overlapping — margins are zeroed out and the gap alone controls
+      spacing, which is more reliable than stacked margin rules.
+   ============================================================================ */
+
+/* ---------- 1. Top bar legibility ---------- */
+.top-bar{
+  background: linear-gradient(180deg, rgba(3,10,20,0.62) 0%, rgba(3,10,20,0.28) 65%, transparent 100%) !important;
+}
+
+/* ---------- 2. Hero tags — full list, Egyptian blue ---------- */
+.hero-tags{
+  color: var(--egyptian-blue);
+  font-weight: 800;
+  text-shadow: 0 1px 3px rgba(255,255,255,0.55), 0 0 14px rgba(255,255,255,0.35);
+}
+.hero-tags span:not(.hero-tag-sep){ color: inherit; }
+.hero-tag-sep{ color: rgba(16,52,166,0.45); }
+
+/* ---------- 3. Taller hero ---------- */
+.hero, .hero-slideshow{ min-height: 100vh; }
+@media (max-width: 760px){
+  .hero, .hero-slideshow{ min-height: 88vh; }
+}
+
+/* ---------- 4. Fix overlapping hero copy ---------- */
+.hero{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-slideshow{
+  padding-top: 110px !important;   /* just enough to clear the floating nav */
+  padding-bottom: 90px !important; /* clears the bottom route strip */
+}
+.hero-main{ width: 100%; }
+.hero-copy{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.hero-tags{ margin: 0; }
+.hero-title{ margin: 0; }
+.hero-copy p{ margin: 0; }
+.hero-copy .hero-actions{ margin: 0; }
+
+/* ============================================================================
+   SERVICES REDESIGN + WHY-CHOOSE-US + TESTIMONIALS RESHAPE + FOOTER
+   appended by Claude
+   ============================================================================ */
+
+/* ---------- Shared cut-corner card shape (services + testimonials) ----------
+   Mirrors the reference image: mostly tight corners, one large sweeping
+   curve (bottom-left), thin gradient border in brand colours. */
+.cut-corner-card{
+  position: relative;
+  display: block;
+  border-radius: 18px 18px 18px 78px;
+  padding: 3px;
+  background: linear-gradient(135deg, var(--egyptian-blue) 0%, var(--brand-red) 55%, var(--egyptian-blue-deep) 100%);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.cut-corner-card.testimonial-card--alt{
+  background: linear-gradient(135deg, var(--brand-red) 0%, var(--egyptian-blue) 55%, var(--egyptian-blue-deep) 100%);
+}
+.cut-corner-card-inner{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--egyptian-blue);
+  border-radius: 16px 16px 16px 76px;
+  overflow: hidden;
+}
+
+/* ---------- Services: image-on-top card body ---------- */
+.service-card.cut-corner-card{
+  width: 320px;
+  background: linear-gradient(135deg, var(--egyptian-blue) 0%, var(--brand-red) 55%, var(--egyptian-blue-deep) 100%) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.service-card-image{ height: 190px; overflow: hidden; }
+.service-card-image img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+.service-card-body{
+  padding: 22px 22px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.service-card-body .card-icon{
+  width: 34px; height: 34px;
+  border-radius: 9px;
+  background: rgb(255, 255, 255);
+  color: #0b2ec9;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 800;
+  margin-bottom: 4px;
+}
+.service-card-body h3{ color: #fff; margin: 0; font-size: 18px; }
+.service-card-body p{ color: rgba(255,255,255,0.72); margin: 0; font-size: 14px; line-height: 1.5; }
+.service-card-body .learn-more{ color: var(--frost-1); font-size: 13px; font-weight: 700; margin-top: 6px; }
+.service-card.active{ box-shadow: 0 16px 34px rgba(0,0,0,0.3); }
+
+/* restore the hover/active feedback your base style.css defines for
+   .service-card — the higher-specificity rules above were silently
+   overriding it, so it's re-applied here at matching specificity */
+.service-card.active .service-card-body .card-icon,
+.service-card:hover .service-card-body .card-icon{
+  background: var(--brand-red);
+  color: #fff;
+}
+.service-card.active .service-card-body .learn-more,
+.service-card:hover .service-card-body .learn-more{
+  color: var(--brand-red);
+}
+
+/* ---------- Services: continuous 3-up slider ---------- */
+#services{ position: relative; overflow: hidden; padding-bottom: 20px; }
+.services-slider{ overflow: hidden; margin-top: 34px; }
+.services-track{
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  padding: 0 24px 10px;
+  animation: services-scroll 36s linear infinite;
+}
+.services-slider:hover .services-track{ animation-play-state: paused; }
+@keyframes services-scroll{
+  from{ transform: translateX(0); }
+  to{ transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce){
+  .services-track{ animation: none; }
+}
+@media (max-width: 560px){
+  .service-card.cut-corner-card{ width: 260px; }
+  .service-card-image{ height: 150px; }
+}
+
+/* ---------- Swinging container — services (left) ---------- */
+.services-container-col{
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  width: 110px;
+  z-index: 5;
+}
+.services-container-col img{
+  display: block;
+  width: 100%;
+  height: auto;
+  transform-origin: 50% 0;
+  animation: about-container-swing 4.5s ease-in-out infinite;
+  filter: drop-shadow(0 14px 22px rgba(212, 8, 8, 0.28));
+}
+@media (max-width: 900px){
+  .services-container-col{ display: none; }
+}
+
+/* ---------- Why Choose Us: triangle-cut image ---------- */
+.why-image{
+  clip-path: polygon(0 0, calc(100% - 64px) 0, 100% 64px, 100% 100%, 0 100%);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* ---------- Testimonials reshaped to match services card ---------- */
+.testimonial-card .cut-corner-card-inner{
+  padding: 26px 24px 24px;
+  justify-content: center;
+  gap: 14px;
+}
+.testimonial-card .container-card-tag{
+  color: var(--frost-1);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.testimonial-card .quote-text{ font-style: italic; color: rgba(255,255,255,0.88); font-size: 14.5px; margin: 0; }
+.testimonial-card .quote-author{ color: #fff; font-weight: 700; font-size: 14px; margin: 0; }
+.testimonial-card .quote-role{ color: rgba(255,255,255,0.6); font-size: 12.5px; margin: 0; }
+
+/* ---------- Swinging container — testimonials (right) ---------- */
+#testimonials-section{ position: relative; overflow: hidden; }
+.testimonials-container-col{
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  width: 110px;
+  z-index: 5;
+}
+.testimonials-container-col img{
+  display: block;
+  width: 100%;
+  height: auto;
+  transform-origin: 50% 0;
+  animation: about-container-swing 4.5s ease-in-out infinite;
+  filter: drop-shadow(0 14px 22px rgba(0,0,0,0.28));
+}
+@media (max-width: 900px){
+  .testimonials-container-col{ display: none; }
+}
+
+/* Footer styles are defined once in the shared stylesheet — see
+   css/style.css §"Footer". Nothing footer-related should be added here. */
+
+/* ---------- Final homepage palette and spacing pass ---------- */
+.card,
+.quote-card,
+.route-item,
+.faq-item,
+.form-card {
+  border-color: rgba(16, 52, 166, 0.18);
+}
+.card:hover,
+.quote-card:hover,
+.route-item:hover {
+  border-color: var(--navy-950);
+}
+.card-icon,
+.why-icon,
+.about-phone-icon {
+  background: var(--navy-950);
+  color: var(--white);
+}
+.card .learn-more,
+.card:hover .learn-more,
+.about-mini-value,
+.progress-value {
+  color: var(--amber-500);
+}
+.service-card.cut-corner-card,
+.container-card.c-navy {
+  background: linear-gradient(135deg, var(--navy-950), var(--amber-500));
+}
+@media (max-width: 560px) {
+  .card,
+  .quote-card,
+  .container-card-panel { padding: 20px; }
+}
+
+/* End of homepage overrides. */

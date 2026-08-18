@@ -3,15 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Logistics & Freight Forwarding</title>
+<title>Wushmat FAG Ltd — Logistics & Freight Forwarding</title>
 <meta name="description" content="Reliable sea freight, air freight, road transport, and customs clearance services. Real-time tracking and instant quoting.">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/homepage-redesign.css">
 <link rel="icon" href="images/favicon.ico">
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 </head>
 <body>
 
+<!-- ============ TOP INFO BAR ============ -->
+<div class="top-bar">
+  <div class="container top-bar-inner">
+    <div class="top-bar-left">
+      <a href="tel:+254710958804" class="top-bar-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +254 710 958 804
+      </a>
+      <a href="mailto:info@wushmatfagltd.co.ke" class="top-bar-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg>
+        info@wushmatfagltd.co.ke
+      </a>
+      <span class="top-bar-item top-bar-hours">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Mon – Sat: 8:00am – 6:00pm
+      </span>
+    </div>
+
+    <div class="top-bar-right">
+      <div class="lang-dropdown">
+        <button type="button" class="lang-dropdown-btn" id="lang-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+          <span class="lang-flag">🇬🇧</span> EN
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <ul class="lang-dropdown-menu" id="lang-dropdown-menu">
+          <li><button type="button" data-lang="en"><span class="lang-flag">🇬🇧</span> English</button></li>
+          <li><button type="button" data-lang="sw"><span class="lang-flag">🇰🇪</span> Kiswahili</button></li>
+          <li><button type="button" data-lang="fr"><span class="lang-flag">🇫🇷</span> Français</button></li>
+          <li><button type="button" data-lang="es"><span class="lang-flag">🇪🇸</span> Español</button></li>
+          <li><button type="button" data-lang="pt"><span class="lang-flag">🇵🇹</span> Português</button></li>
+          <li><button type="button" data-lang="ar"><span class="lang-flag">🇸🇦</span> العربية</button></li>
+          <li><button type="button" data-lang="zh"><span class="lang-flag">🇨🇳</span> 中文</button></li>
+        </ul>
+      </div>
+
+      <div class="top-bar-socials">
+        <a href="#" class="top-bar-social" title="LinkedIn" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
+        <a href="#" class="top-bar-social" title="Facebook" aria-label="Facebook" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.6h2.55l.38-2.96h-2.93V8.56c0-.86.24-1.44 1.47-1.44h1.57V4.46A21 21 0 0 0 14.1 4.3c-2.24 0-3.78 1.37-3.78 3.87v2.17H7.75v2.96h2.57V21h3.18z"/></svg>
+        </a>
+        <a href="#" class="top-bar-social" title="Instagram" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1"/></svg>
+        </a>
+        <a href="#" class="top-bar-social" title="X (Twitter)" aria-label="X (Twitter)" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.68L23 22h-6.9l-5.4-6.6L4.5 22H1.4l8.1-9.27L1 2h7.1l4.9 6.02L18.9 2zm-1.2 18.2h1.7L7.4 3.7H5.6l12.1 16.5z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 <header class="site-header">
   <nav class="nav">
     <a href="index.html" class="brand">
@@ -36,79 +89,312 @@
 </header>
 
 <main>
-  <!--
-    To show a background image behind the royal-blue cover, add a style
-    attribute here, e.g.:
-    <section class="hero" style="background-image:url('images/hero.jpg')">
-  -->
-  <section class="hero" id="hero">
-    <img src="images/hero.jpeg" alt="" class="hero-bg-img" onerror="this.style.display='none'">
-    <div class="hero-glass">
-      <span class="eyebrow">Sea · Air · Road · Customs</span>
-      <h1>Global Logistics,<br>Delivered with Precision</h1>
-      <p>End-to-end sea, air, and road freight solutions with real-time tracking, instant quoting, and reliable customs clearance.</p>
-      <div class="hero-actions">
-        <a href="track.html" class="btn btn-primary">Track Shipment</a>
-        <a href="quote.html" class="btn btn-secondary">Get a Quote</a>
+
+  <!-- ============ HERO — rotating photo slideshow, synced text, frost overlay, image watermark ============ -->
+  <section class="hero hero-slideshow" id="hero">
+
+    <!-- WATERMARK — replace images/watermark.png with your logo/mark PNG
+         (transparent background works best). -->
+    <div class="hero-watermark" aria-hidden="true">
+      <img src="images/logistcs.png" alt="" onerror="this.style.display='none'">
+    </div>
+
+    <div class="hero-slide hero-slide-1"><img src="images/hero1.jpeg" alt="" onerror="this.parentElement.style.display='none'"></div>
+    <div class="hero-slide hero-slide-2"><img src="images/hero2.jpeg" alt="" onerror="this.parentElement.style.display='none'"></div>
+    <div class="hero-slide hero-slide-3"><img src="images/night.jpg" alt="" onerror="this.parentElement.style.display='none'"></div>
+
+    <!-- ice/frost wash — replaces any blue overlay -->
+    <div class="hero-frost" aria-hidden="true"></div>
+
+    <div class="hero-main">
+      <div class="hero-copy">
+        <div class="hero-tags hero-reveal" style="animation-delay:0.1s;">
+          <span>Sea</span><span class="hero-tag-sep">|</span>
+          <span>Air</span><span class="hero-tag-sep">|</span>
+          <span>Road</span><span class="hero-tag-sep">|</span>
+          <span>Customs</span>
+        </div>
+
+        <h1 class="hero-title" aria-label="The Bridge to Your Logistics Success"
+            data-lines='["The Bridge to Your","Logistics Success"]'>
+          <span class="type-target">The Bridge to Your<br>Logistics Success</span>
+        </h1>
+
+        <p class="hero-reveal" style="animation-delay:1.9s;">We connect your business to the world with reliable, efficient and tailored logistics solutions.</p>
+        <div class="hero-actions hero-reveal" style="animation-delay:2.1s;">
+          <a href="track.html" class="btn btn-primary">Track Shipment <span aria-hidden="true">→</span></a>
+          <a href="quote.html" class="btn btn-secondary">Get a Quote <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM ROUTE STRIP -->
+    <div class="hero-route-strip">
+      <p class="hero-route-tagline"><b>From pickup to delivery. Every mile managed.</b> &nbsp;·&nbsp; Across Kenya, East Africa, and the world.</p>
+      <div class="hero-route-track">
+        <div class="hero-route-line"></div>
+        <div class="hero-route-dot"></div>
+        <span>NAIROBI</span>
+        <span>DUBAI</span>
+        <span>ROTTERDAM</span>
+        <span>SINGAPORE</span>
       </div>
     </div>
   </section>
 
+  <!-- ============ QUICK SERVICE STRIP ============ -->
+  <section class="quick-strip">
+    <div class="container quick-strip-inner">
+      <a href="services/sea-freight.html" class="quick-strip-item">
+        <span class="quick-strip-icon">SF</span> Sea Freight
+      </a>
+      <a href="services/air-freight.html" class="quick-strip-item">
+        <span class="quick-strip-icon">AF</span> Air Freight
+      </a>
+      <a href="services/road-transport.html" class="quick-strip-item">
+        <span class="quick-strip-icon">RT</span> Road Transport
+      </a>
+      <a href="services/customs-clearance.html" class="quick-strip-item">
+        <span class="quick-strip-icon">CC</span> Customs Clearance
+      </a>
+      <a href="services/warehousing.html" class="quick-strip-item">
+        <span class="quick-strip-icon">WH</span> Warehousing
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ SCROLLING MARQUEE TICKER ============ -->
+  <div class="marquee-band" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Global Export</span><span class="dot">•</span>
+      <span class="outline">Transport</span><span class="dot">•</span>
+      <span>Global Import</span><span class="dot">•</span>
+      <span class="outline">Logistics</span><span class="dot">•</span>
+      <span>Sea Freight</span><span class="dot">•</span>
+      <span class="outline">Air Freight</span><span class="dot">•</span>
+      <span>Road Transport</span><span class="dot">•</span>
+      <span class="outline">Customs Clearance</span><span class="dot">•</span>
+      <span>Global Export</span><span class="dot">•</span>
+      <span class="outline">Transport</span><span class="dot">•</span>
+      <span>Global Import</span><span class="dot">•</span>
+      <span class="outline">Logistics</span><span class="dot">•</span>
+      <span>Sea Freight</span><span class="dot">•</span>
+      <span class="outline">Air Freight</span><span class="dot">•</span>
+      <span>Road Transport</span><span class="dot">•</span>
+      <span class="outline">Customs Clearance</span><span class="dot">•</span>
+    </div>
+  </div>
+
+  <!-- ============ ABOUT — 3-column layout ============ -->
+  <section id="about-section">
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="about-image-side">
+          <div class="about-main-photo">
+            <img src="images/ship1.jpg" alt="Wushmat FAG Ltd operations" onerror="this.style.display='none'">
+          </div>
+          <div class="about-circle-photo">
+            <img src="images/ship.jpg" alt="Wushmat FAG Ltd fleet" onerror="this.style.display='none'">
+          </div>
+          <div class="about-ribbon">12+ Years Experience</div>
+        </div>
+
+        <div class="about-copy-side">
+          <span class="eyebrow">About Our Company</span>
+          <h2>Why Businesses Trust Our Logistics Solutions</h2>
+          <p>Wushmat Family Allied Generations Ltd has spent over a decade moving cargo by sea, air, and road for businesses across East Africa — pairing hands-on freight expertise with the kind of technology that keeps you informed at every step, not just at pickup and delivery.</p>
+          <div class="about-checklist">
+            <div class="about-checklist-item">» Fast &amp; Reliable Delivery</div>
+            <div class="about-checklist-item">» End-to-End Solutions</div>
+            <div class="about-checklist-item">» Real-Time Tracking</div>
+            <div class="about-checklist-item">» Competitive Pricing</div>
+          </div>
+          <div class="about-cta-row">
+            <a href="about.html" class="btn btn-primary">About More →</a>
+            <div class="about-phone">
+              <span class="about-phone-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </span>
+              <div>
+                <div class="about-phone-label">Call Us Any Time:</div>
+                <div class="about-phone-value">+254 710 958 804</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-container-col">
+          <img src="images/container.png" alt="Shipping container" onerror="this.style.display='none'">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
   <section id="services">
+    <div class="services-container-col" aria-hidden="true">
+      <img src="images/slide-sh1.png" alt="" onerror="this.style.display='none'">
+    </div>
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">What we do</span>
         <h2>Our Services</h2>
         <p>Comprehensive logistics solutions tailored to your supply chain needs.</p>
       </div>
-      <div class="grid grid-3">
-        <a href="services/sea-freight.html" class="card service-card active">
-          <div class="card-icon">SF</div>
-          <h3>Sea Freight</h3>
-          <p>Full container load (FCL) and less-than-container load (LCL) shipping worldwide.</p>
-          <span class="learn-more">Learn more →</span>
+    </div>
+
+    <div class="services-slider">
+      <div class="services-track">
+
+        <a href="services/sea-freight.html" class="cut-corner-card service-card active">
+          <div class="cut-corner-card-inner">
+            <div class="service-card-image"><img src="images/ship1.jpg" alt="Sea Freight" onerror="this.style.display='none'"></div>
+            <div class="service-card-body">
+              <div class="card-icon">SF</div>
+              <h3>Sea Freight</h3>
+              <p>Full container load (FCL) and less-than-container load (LCL) shipping worldwide.</p>
+              <span class="learn-more">Learn more →</span>
+            </div>
+          </div>
         </a>
-        <a href="services/air-freight.html" class="card service-card">
-          <div class="card-icon">AF</div>
-          <h3>Air Freight</h3>
-          <p>Time-critical air cargo solutions with expedited customs clearance.</p>
-          <span class="learn-more">Learn more →</span>
+        <a href="services/air-freight.html" class="cut-corner-card service-card">
+          <div class="cut-corner-card-inner">
+            <div class="service-card-image"><img src="images/air.jpg" alt="Air Freight" onerror="this.style.display='none'"></div>
+            <div class="service-card-body">
+              <div class="card-icon">AF</div>
+              <h3>Air Freight</h3>
+              <p>Time-critical air cargo solutions with expedited customs clearance.</p>
+              <span class="learn-more">Learn more →</span>
+            </div>
+          </div>
         </a>
-        <a href="services/road-transport.html" class="card service-card">
-          <div class="card-icon">RT</div>
-          <h3>Road Transport</h3>
-          <p>Cross-border and domestic road freight with real-time GPS tracking.</p>
-          <span class="learn-more">Learn more →</span>
+        <a href="services/road-transport.html" class="cut-corner-card service-card">
+          <div class="cut-corner-card-inner">
+            <div class="service-card-image"><img src="images/truck.png" alt="Road Transport" onerror="this.style.display='none'"></div>
+            <div class="service-card-body">
+              <div class="card-icon">RT</div>
+              <h3>Road Transport</h3>
+              <p>Cross-border and domestic road freight with real-time GPS tracking.</p>
+              <span class="learn-more">Learn more →</span>
+            </div>
+          </div>
         </a>
-        <a href="services/customs-clearance.html" class="card service-card">
-          <div class="card-icon">CC</div>
-          <h3>Customs Clearance</h3>
-          <p>Expert customs brokerage ensuring compliant and speedy clearance.</p>
-          <span class="learn-more">Learn more →</span>
+        <a href="services/customs-clearance.html" class="cut-corner-card service-card">
+          <div class="cut-corner-card-inner">
+            <div class="service-card-image"><img src="images/Sounds (1).png" alt="Customs Clearance" onerror="this.style.display='none'"></div>
+            <div class="service-card-body">
+              <div class="card-icon">CC</div>
+              <h3>Customs Clearance</h3>
+              <p>Expert customs brokerage ensuring compliant and speedy clearance.</p>
+              <span class="learn-more">Learn more →</span>
+            </div>
+          </div>
         </a>
-        <a href="services/warehousing.html" class="card service-card">
-          <div class="card-icon">WH</div>
-          <h3>Warehousing</h3>
-          <p>Secure storage, inventory management, and distribution services.</p>
-          <span class="learn-more">Learn more →</span>
+        <a href="services/warehousing.html" class="cut-corner-card service-card">
+          <div class="cut-corner-card-inner">
+            <div class="service-card-image"><img src="images/warehouse.jpg" alt="Warehousing" onerror="this.style.display='none'"></div>
+            <div class="service-card-body">
+              <div class="card-icon">WH</div>
+              <h3>Warehousing</h3>
+              <p>Secure storage, inventory management, and distribution services.</p>
+              <span class="learn-more">Learn more →</span>
+            </div>
+          </div>
         </a>
-        <a href="track.html" class="card service-card">
-          <div class="card-icon">EV</div>
-          <h3>End-to-End Visibility</h3>
-          <p>Track every shipment in real time from pickup to delivery.</p>
-          <span class="learn-more">Learn more →</span>
+        <a href="track.html" class="cut-corner-card service-card">
+          <div class="cut-corner-card-inner">
+            <div class="service-card-image"><img src="images/end.jpg" alt="End-to-End Visibility" onerror="this.style.display='none'"></div>
+            <div class="service-card-body">
+              <div class="card-icon">EV</div>
+              <h3>End-to-End Visibility</h3>
+              <p>Track every shipment in real time from pickup to delivery.</p>
+              <span class="learn-more">Learn more →</span>
+            </div>
+          </div>
         </a>
+
+        <!-- duplicated set — required for the seamless continuous scroll -->
+        <a href="services/sea-freight.html" class="cut-corner-card service-card" aria-hidden="true" tabindex="-1">
+          <div class="cut-corner-card-inner">
+            <div class="service-card-image"><img src="images/ship1.jpg" alt="" onerror="this.style.display='none'"></div>
+            <div class="service-card-body">
+              <div class="card-icon">SF</div>
+              <h3>Sea Freight</h3>
+              <p>Full container load (FCL) and less-than-container load (LCL) shipping worldwide.</p>
+              <span class="learn-more">Learn more →</span>
+            </div>
+          </div>
+        </a>
+        <a href="services/air-freight.html" class="cut-corner-card service-card" aria-hidden="true" tabindex="-1">
+          <div class="cut-corner-card-inner">
+            <div class="service-card-image"><img src="images/air.jpg" alt="" onerror="this.style.display='none'"></div>
+            <div class="service-card-body">
+              <div class="card-icon">AF</div>
+              <h3>Air Freight</h3>
+              <p>Time-critical air cargo solutions with expedited customs clearance.</p>
+              <span class="learn-more">Learn more →</span>
+            </div>
+          </div>
+        </a>
+        <a href="services/road-transport.html" class="cut-corner-card service-card" aria-hidden="true" tabindex="-1">
+          <div class="cut-corner-card-inner">
+            <div class="service-card-image"><img src="images/truck" alt="" onerror="this.style.display='none'"></div>
+            <div class="service-card-body">
+              <div class="card-icon">RT</div>
+              <h3>Road Transport</h3>
+              <p>Cross-border and domestic road freight with real-time GPS tracking.</p>
+              <span class="learn-more">Learn more →</span>
+            </div>
+          </div>
+        </a>
+        <a href="services/customs-clearance.html" class="cut-corner-card service-card" aria-hidden="true" tabindex="-1">
+          <div class="cut-corner-card-inner">
+            <div class="service-card-image"><img src="images/Sounds (1).png" alt="" onerror="this.style.display='none'"></div>
+            <div class="service-card-body">
+              <div class="card-icon">CC</div>
+              <h3>Customs Clearance</h3>
+              <p>Expert customs brokerage ensuring compliant and speedy clearance.</p>
+              <span class="learn-more">Learn more →</span>
+            </div>
+          </div>
+        </a>
+        <a href="services/warehousing.html" class="cut-corner-card service-card" aria-hidden="true" tabindex="-1">
+          <div class="cut-corner-card-inner">
+            <div class="service-card-image"><img src="images/warehouse.jpg" alt="" onerror="this.style.display='none'"></div>
+            <div class="service-card-body">
+              <div class="card-icon">WH</div>
+              <h3>Warehousing</h3>
+              <p>Secure storage, inventory management, and distribution services.</p>
+              <span class="learn-more">Learn more →</span>
+            </div>
+          </div>
+        </a>
+        <a href="track.html" class="cut-corner-card service-card" aria-hidden="true" tabindex="-1">
+          <div class="cut-corner-card-inner">
+            <div class="service-card-image"><img src="images/end.jpg" alt="" onerror="this.style.display='none'"></div>
+            <div class="service-card-body">
+              <div class="card-icon">EV</div>
+              <h3>End-to-End Visibility</h3>
+              <p>Track every shipment in real time from pickup to delivery.</p>
+              <span class="learn-more">Learn more →</span>
+            </div>
+          </div>
+        </a>
+
       </div>
     </div>
   </section>
 
+  <!-- ============ WHY CHOOSE US ============ -->
   <section style="background: var(--slate-50);">
     <div class="container">
       <div class="why-grid">
         <div class="why-content">
-          <div class="section-head">
+          <div class="section-head" style="text-align:left; margin:0 0 28px; max-width:none;">
             <span class="eyebrow">Why Wushmat FAG LTD</span>
-            <h2>Why Choose US?</h2>
+            <h2>Why Choose Us?</h2>
             <p>We combine industry expertise with cutting-edge technology to deliver logistics solutions you can rely on.</p>
           </div>
           <ul class="why-list">
@@ -142,34 +428,101 @@
             </li>
           </ul>
         </div>
-        <div class="why-image">
-          <img src="images/customs.jpeg" alt=" logistics operations" onerror="this.style.display='none'">
+        <div>
+          <div class="why-image" style="margin-bottom:24px;">
+            <img src="images/customs.jpeg" alt="Logistics operations" onerror="this.style.display='none'">
+          </div>
+          <div class="progress-list">
+            <div class="progress-item">
+              <div class="progress-item-head"><span>On-Time Delivery Rate</span><span class="progress-value" data-target="98">0%</span></div>
+              <div class="progress-track"><div class="progress-fill" data-fill="98"></div></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-item-head"><span>Shipment Accuracy</span><span class="progress-value" data-target="99">0%</span></div>
+              <div class="progress-track"><div class="progress-fill" data-fill="99"></div></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-item-head"><span>Customer Satisfaction</span><span class="progress-value" data-target="92">0%</span></div>
+              <div class="progress-track"><div class="progress-fill" data-fill="92"></div></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section>
+  <!-- ============ STATS BAND ============ -->
+  <section class="stats-band">
+    <div class="container stats-band-grid">
+      <div class="stats-band-item">
+        <div class="stats-band-value" data-counter="4700" data-suffix="+">+ 4700</div>
+        <div class="stats-band-label">Successful Shipments</div>
+      </div>
+      <div class="stats-band-item">
+        <div class="stats-band-value" data-counter="35" data-suffix="+">35</div>
+        <div class="stats-band-label">Expert Team Members</div>
+      </div>
+      <div class="stats-band-item">
+        <div class="stats-band-value" data-counter="12" data-suffix="+">12</div>
+        <div class="stats-band-label">Years of Experience and Counting</div>
+      </div>
+      <div class="stats-band-item">
+        <div class="stats-band-value" data-counter="900" data-suffix="+">+900</div>
+        <div class="stats-band-label">Satisfied Customers</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRACKING CTA BAND ============ -->
+  <section class="tracking-band">
+    <img src="images/hero.jpeg" alt="" class="tracking-band-bg" onerror="this.style.display='none'">
+    <div class="container tracking-band-inner">
+      <div class="tracking-band-copy">
+        <span class="eyebrow">Tracking</span>
+        <h2>Track the Status of Your Shipment Instantly</h2>
+        <p>Enter your tracking number to get real-time updates on your shipment's location and delivery status.</p>
+      </div>
+      <form class="tracking-band-form" action="track.html" method="get">
+        <input type="text" name="number" placeholder="Enter tracking number, e.g. PLX-2026-000123" required>
+        <button type="submit" class="btn btn-primary">Track Now</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section id="testimonials-section">
+    <div class="testimonials-container-col" aria-hidden="true">
+      <img src="images/red-container.png" alt="" onerror="this.style.display='none'">
+    </div>
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Testimonials</span>
         <h2>What Our Clients Say</h2>
       </div>
       <div class="grid grid-3">
-        <div class="quote-card">
-          <p class="quote-text">"Real-time tracking transformed our supply chain visibility — we know exactly where our cargo is at all times."</p>
-          <p class="quote-author">Amara Chen</p>
-          <p class="quote-role">Operations Director, Northbridge Traders</p>
+        <div class="cut-corner-card testimonial-card">
+          <div class="cut-corner-card-inner">
+            <span class="container-card-tag">Client Feedback</span>
+            <p class="quote-text">"Real-time tracking transformed our supply chain visibility — we know exactly where our cargo is at all times."</p>
+            <p class="quote-author">Amara Chen</p>
+            <p class="quote-role">Operations Director, Northbridge Traders</p>
+          </div>
         </div>
-        <div class="quote-card">
-          <p class="quote-text">"Their customs clearance team is incredibly efficient. Clearance times dropped by nearly 40%."</p>
-          <p class="quote-author">Daniel Ortiz</p>
-          <p class="quote-role">CEO, Meridian Exports</p>
+        <div class="cut-corner-card testimonial-card testimonial-card--alt">
+          <div class="cut-corner-card-inner">
+            <span class="container-card-tag">Client Feedback</span>
+            <p class="quote-text">"Their customs clearance team is incredibly efficient. Clearance times dropped by nearly 40%."</p>
+            <p class="quote-author">Daniel Ortiz</p>
+            <p class="quote-role">CEO, Meridian Exports</p>
+          </div>
         </div>
-        <div class="quote-card">
-          <p class="quote-text">"Reliable, professional, and always responsive — our go-to partner for freight forwarding."</p>
-          <p class="quote-author">Priya Nair</p>
-          <p class="quote-role">Logistics Manager, Harborline Industries</p>
+        <div class="cut-corner-card testimonial-card">
+          <div class="cut-corner-card-inner">
+            <span class="container-card-tag">Client Feedback</span>
+            <p class="quote-text">"Reliable, professional, and always responsive — our go-to partner for freight forwarding."</p>
+            <p class="quote-author">Priya Nair</p>
+            <p class="quote-role">Logistics Manager, Harborline Industries</p>
+          </div>
         </div>
       </div>
     </div>
@@ -188,13 +541,15 @@
 </main>
 
 <footer class="site-footer">
+  <img src="images/night.jpg" alt="" class="site-footer-bg" onerror="this.style.display='none'">
+  <div class="site-footer-overlay" aria-hidden="true"></div>
   <div class="footer-grid">
     <div>
       <a href="index.html" class="brand" style="color:#fff; margin-bottom:14px; display:flex;">
-        <img src="images/logo.jpeg" alt="Paramount Logistics" class="brand-logo brand-logo-footer" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+        <img src="images/logo.jpeg" alt="Wushmat FAG Ltd" class="brand-logo brand-logo-footer" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
         <span class="brand-fallback"><span class="brand-mark"></span> WUSHMAT FAG LTD</span>
       </a>
-      <p style="opacity:0.7; font-size:14px; max-width:280px;">Your trusted partner in global logistics — sea, air, and road freight forwarding with real-time tracking and reliable customs clearance.</p>
+      <p style="opacity:0.7; font-size:14px; max-width:280px;">Your trusted partner in global logistics  sea, air, and road freight forwarding with real-time tracking and reliable customs clearance.</p>
     </div>
     <div>
       <h4>Services</h4>
@@ -224,21 +579,15 @@
       </ul>
     </div>
   </div>
-  <div class="footer-bottom">© <span id="year"></span> WUSHMAT FAG LTD . All rights reserved.</div>
+  <div class="footer-bottom">© <span id="year"></span> WUSHMAT FAG LTD. All rights reserved.</div>
 </footer>
 
+<!-- ============ FLOATING ACTIONS — WhatsApp only ============ -->
 <div class="floating-actions">
-  <a href="track.html" class="floating-btn track" title="Track Shipment" aria-label="Track Shipment">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 1 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-  </a>
-  <a href="quote.html" class="floating-btn quote" title="Get a Quote" aria-label="Get a Quote">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6a1 1 0 0 1 1 1v1h1a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1V4a1 1 0 0 1 1-1z"/><path d="M9 12h6M9 16h4"/></svg>
-  </a>
   <a href="https://wa.me/254728548679" class="floating-btn whatsapp" title="Chat on WhatsApp" aria-label="Chat on WhatsApp" target="_blank" rel="noopener">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.62 1.44 5.15L2 22l5.13-1.53a9.86 9.86 0 0 0 4.9 1.31h.01c5.46 0 9.9-4.45 9.9-9.9C21.94 6.45 17.5 2 12.04 2zm5.79 14.06c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.13.11-1.83-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.15-4.94-4.34-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.57.81 1.98.88 2.13.07.14.12.31.02.5-.1.19-.15.3-.29.46-.14.16-.3.36-.43.48-.14.13-.29.28-.13.55.17.28.75 1.24 1.61 2.01 1.11.99 2.04 1.3 2.32 1.44.28.14.44.12.6-.07.17-.19.71-.83.9-1.11.19-.28.38-.24.63-.14.26.09 1.65.78 1.93.92.28.14.47.21.53.33.07.12.07.68-.17 1.36z"/></svg>
   </a>
 </div>
-
 
 <script>
   document.querySelectorAll(".service-card").forEach((card) => {
@@ -252,8 +601,11 @@
   });
 </script>
 <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+<script src="js/counters.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="js/supabase-client.js"></script>
 <script src="js/nav.js"></script>
+<script src="js/topbar.js"></script>
+<script src="js/hero-nav-refresh.js"></script>
 </body>
 </html>
