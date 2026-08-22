@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Track & Trace | Paramount Logistics</title>
+<title>Track &amp; Trace | Wushmat FAG LTD</title>
+<meta name="description" content="Track your Wushmat FAG LTD shipment and view its latest delivery status.">
 <link rel="stylesheet" href="css/style.css">
 <link rel="icon" href="images/favicon.ico">
 <link rel="icon" type="image/png" href="images/favicon.png">
@@ -15,8 +16,8 @@
   <nav class="nav">
     <a href="index.html" class="brand">
       <span class="brand-logo-wrap">
-        <img src="images/logo.jpeg" alt="" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <span class="brand-mark" style="display:none;"></span>
+        <img src="images/logo.jpeg" alt="Wushmat FAG LTD logo" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <span class="brand-mark" style="display:none;">W</span>
       </span>
       <span class="brand-name">WUSHMAT FAG LTD</span>
     </a>
@@ -24,7 +25,7 @@
     <div class="nav-links" id="nav-links">
       <a href="index.html" data-page="index.html">Home</a>
       <a href="index.html#services">Services</a>
-      <a href="track.html" data-page="track.html">Track & Trace</a>
+      <a href="track.html" data-page="track.html">Track &amp; Trace</a>
       <a href="quote.html" data-page="quote.html">Get a Quote</a>
       <a href="about.html" data-page="about.html">About</a>
       <a href="resources.html" data-page="resources.html">Resources</a>
@@ -35,31 +36,95 @@
 </header>
 
 <section class="page-hero">
-  <img src="images/truck.png" alt="" class="page-hero-bg-img" onerror="this.style.display='none'">
-  <div class="page-hero-glass">
-    <h1>Track & Trace</h1>
-    <p>Real-time visibility for every shipment.</p>
+  <img src="images/truck.png" alt="Freight truck transporting a shipment" class="page-hero-bg-img" onerror="this.style.display='none'">
+  <div class="page-hero-glass reveal">
+    <span class="eyebrow">Shipment visibility</span>
+    <h1>Track Your Shipment</h1>
+    <p>Enter your tracking number to view the latest shipment status, location, and delivery updates.</p>
+    <a href="#tracking-panel" class="btn btn-primary">Track a Shipment</a>
   </div>
 </section>
 
-<main class="form-page" style="padding-top:56px;">
-  <form id="track-form" style="display:flex; gap:12px; flex-wrap:wrap;">
-    <input type="text" id="tracking-number" placeholder="Enter Tracking Number" required
-      style="flex:1; min-width:200px; padding:12px 14px; border:1px solid var(--slate-200); border-radius:8px; font-size:14.5px;">
-    <button type="submit" id="track-btn" class="btn btn-primary">Track</button>
-  </form>
-  <p style="font-size:13px; color:var(--slate-500); margin-top:10px;">
-    Try: <strong>PLX-2026-000123</strong> for a demo shipment
-  </p>
-  <p id="track-msg" class="form-msg error"></p>
+<main class="tracking-page">
+  <section class="tracking-section" id="tracking-panel">
+    <div class="container">
+      <div class="tracking-layout">
+        <div class="tracking-intro reveal">
+          <span class="eyebrow">Track and trace</span>
+          <h2>Where Is Your Shipment?</h2>
+          <p>Enter the reference number provided by our logistics team. Tracking results depend on the latest information available for your shipment.</p>
+          <div class="tracking-help">
+            <span class="help-icon">?</span>
+            <div>
+              <strong>Do you need help?</strong>
+              <p>Check your quotation, shipping confirmation, or delivery documents for the correct tracking reference.</p>
+            </div>
+          </div>
+        </div>
 
-  <div id="tracking-result" class="tracking-result" style="display:none;"></div>
+        <div class="tracking-card reveal">
+          <form id="track-form" class="tracking-form">
+            <label for="tracking-number">Tracking number</label>
+            <div class="tracking-input-row">
+              <input type="text" id="tracking-number" name="tracking-number" placeholder="Example: PLX-2026-000123" autocomplete="off" autocapitalize="characters" spellcheck="false" required aria-describedby="tracking-hint track-msg">
+              <button type="submit" id="track-btn" class="btn btn-primary">Track</button>
+            </div>
+            <p id="tracking-hint" class="form-hint">Enter the full tracking number without spaces.</p>
+            <p id="track-msg" class="form-msg error" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="demo-reference">
+            <span>Demo reference</span>
+            <button type="button" class="demo-number" id="demo-tracking-number">PLX-2026-000123</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="tracking-result" class="tracking-result" style="display:none;" aria-live="polite" aria-atomic="true"></div>
+    </div>
+  </section>
 </main>
 
 <footer class="site-footer">
-  <div class="footer-bottom" style="max-width:1120px; margin:0 auto; border-top:none; padding-top:0;">
-    © <span id="year"></span> WUSHMAT FAG LTD. All rights reserved.
+   <img src="images/truck.png" alt="" class="site-footer-bg" onerror="this.style.display='none'">
+  <div class="site-footer-overlay" aria-hidden="true"></div>
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="brand" style="color:#fff; margin-bottom:14px; display:flex;">
+        <img src="images/logo.jpeg" alt="Wushmat FAG LTD logo" class="brand-logo brand-logo-footer" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+        <span class="brand-fallback"><span class="brand-mark">W</span> Wushmat FAG LTD</span>
+      </a>
+      <p style="opacity:0.7; font-size:14px; max-width:280px;">Your trusted partner in global logistics — sea, air, and road freight forwarding with real-time tracking and reliable customs clearance.</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services/sea-freight.html">Sea Freight</a></li>
+        <li><a href="services/air-freight.html">Air Freight</a></li>
+        <li><a href="services/road-transport.html">Road Transport</a></li>
+        <li><a href="services/customs-clearance.html">Customs Clearance</a></li>
+        <li><a href="services/warehousing.html">Warehousing</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <ul>
+        <li><a href="track.html">Track &amp; Trace</a></li>
+        <li><a href="quote.html">Get a Quote</a></li>
+        <li><a href="dashboard.html">Client Portal</a></li>
+        <li><a href="resources.html#faq">FAQ</a></li>
+      </ul>
+    </div>
   </div>
+  <div class="footer-bottom">© <span id="year"></span> WUSHMAT FAG LTD. All rights reserved.</div>
 </footer>
 
 <div class="floating-actions">
@@ -69,13 +134,35 @@
   <a href="quote.html" class="floating-btn quote" title="Get a Quote" aria-label="Get a Quote">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6a1 1 0 0 1 1 1v1h1a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1V4a1 1 0 0 1 1-1z"/><path d="M9 12h6M9 16h4"/></svg>
   </a>
-  <a href="https://wa.me/254700000000" class="floating-btn whatsapp" title="Chat on WhatsApp" aria-label="Chat on WhatsApp" target="_blank" rel="noopener">
+  <a href="https://wa.me/254728548679" class="floating-btn whatsapp" title="Chat on WhatsApp" aria-label="Chat on WhatsApp" target="_blank" rel="noopener">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.62 1.44 5.15L2 22l5.13-1.53a9.86 9.86 0 0 0 4.9 1.31h.01c5.46 0 9.9-4.45 9.9-9.9C21.94 6.45 17.5 2 12.04 2zm5.79 14.06c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.13.11-1.83-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.15-4.94-4.34-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.57.81 1.98.88 2.13.07.14.12.31.02.5-.1.19-.15.3-.29.46-.14.16-.3.36-.43.48-.14.13-.29.28-.13.55.17.28.75 1.24 1.61 2.01 1.11.99 2.04 1.3 2.32 1.44.28.14.44.12.6-.07.17-.19.71-.83.9-1.11.19-.28.38-.24.63-.14.26.09 1.65.78 1.93.92.28.14.47.21.53.33.07.12.07.68-.17 1.36z"/></svg>
   </a>
 </div>
 
 
-<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const demoBtn = document.getElementById("demo-tracking-number");
+  const trackingInput = document.getElementById("tracking-number");
+  demoBtn?.addEventListener("click", () => {
+    trackingInput.value = demoBtn.textContent.trim();
+    trackingInput.focus();
+  });
+
+  const revealElements = document.querySelectorAll(".reveal");
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+  );
+  revealElements.forEach((element) => revealObserver.observe(element));
+</script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="js/supabase-client.js"></script>
 <script src="js/nav.js"></script>
