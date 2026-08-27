@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Paramount Logistics — Shared Stylesheet
+    Wushmat  Logistics — Shared Stylesheet
    ========================================================================== */
 
 :root {
@@ -1348,3 +1348,359 @@ section { padding: 88px 0; }
 .auth-wrap { max-width: 400px; margin: 0 auto; padding: 90px 24px; }
 .auth-wrap h1 { font-size: 26px; font-weight: 800; margin: 0 0 26px; }
 .auth-toggle { margin-top: 16px; font-size: 13.5px; color: #B40023; background: none; border: none; text-decoration: underline; cursor: pointer; padding: 0; }
+/* =========================================================
+   CALCULATOR SECTION — SEMI-CIRCLE PARTITION
+   ========================================================= */
+
+#calculator-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--navy-950);
+  padding: 48px 0 55px;
+}
+
+.calculator-section-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+#calculator-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(217, 208, 193, 0.55) 0%,
+    rgba(248, 246, 242, 0.60) 55%,
+    rgba(217, 208, 193, 0.55) 100%
+  );
+}
+
+#calculator-section .section-head .eyebrow {
+  color: var(--navy-950);
+  background: #D9D0C1;
+}
+
+#calculator-section .section-head h2 {
+  color: var(--navy-950);
+}
+
+#calculator-section .section-head p {
+  color: #050505;
+}
+
+
+/* =========================================================
+   MAIN CALCULATOR CARD
+   ========================================================= */
+
+.calculator-visual-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  min-height: 350px;
+  margin-top: 35px;
+  background: var(--navy-950);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.16);
+}
+
+
+/* =========================================================
+   PHOTO PANEL
+   ========================================================= */
+
+.calculator-photo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 350px;
+  margin: 0;
+  overflow: hidden;
+}
+
+.calculator-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.calculator-photo-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(16, 52, 166, 0.08) 0%,
+    rgba(16, 52, 166, 0.28) 100%
+  );
+}
+
+
+/* =========================================================
+   WHITE COPY PANEL + CURVED PARTITION
+   ========================================================= */
+
+.calculator-copy {
+  position: relative;
+  z-index: 3;
+  background: var(--white);
+  padding: 42px 85px 42px 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 22px 0 0 22px;
+  box-shadow: 12px 0 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Main curved edge */
+.calculator-copy::after {
+  content: "";
+  position: absolute;
+  top: -4%;
+  right: -45px;
+  width: 190px;
+  height: 108%;
+  background: var(--white);
+  border-radius: 50%;
+  z-index: 0;
+  box-shadow: 7px 0 18px rgba(0, 0, 0, 0.07);
+}
+
+/* Red accent following the curve */
+.calculator-copy::before {
+  content: "";
+  position: absolute;
+  top: -4%;
+  right: -55px;
+  width: 202px;
+  height: 108%;
+  border-radius: 50%;
+  border-right: 5px solid #B40023;
+  z-index: 0;
+}
+
+
+/* =========================================================
+   COPY CONTENT
+   ========================================================= */
+
+.calculator-copy .section-head {
+  position: relative;
+  z-index: 2;
+  text-align: left;
+  margin: 0;
+  max-width: 560px;
+}
+
+.calculator-copy .section-head .eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--navy-950);
+  background: #D9D0C1;
+}
+
+.calculator-copy .section-head h2 {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 10px;
+  color: var(--navy-950);
+}
+
+.calculator-copy .section-head p {
+  font-size: 14px;
+  color: #5a3a1c;
+  margin: 0 0 20px;
+  line-height: 1.55;
+  max-width: 480px;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+#calculator-section .hero-actions {
+  position: relative;
+  z-index: 2;
+  gap: 12px;
+  justify-content: flex-start;
+  margin-top: 0;
+}
+
+#calculator-section .btn-secondary {
+  background: var(--navy-950);
+  color: var(--white);
+  border-color: var(--navy-950);
+  backdrop-filter: none;
+  box-shadow: 0 4px 16px rgba(16, 52, 166, 0.30);
+}
+
+#calculator-section .btn-secondary:hover {
+  background: var(--navy-800, #0d2a8a);
+  border-color: var(--navy-800, #0d2a8a);
+  box-shadow: 0 8px 26px rgba(16, 52, 166, 0.40);
+  opacity: 1;
+}
+
+
+/* =========================================================
+   SHIPMENT BADGE
+   ========================================================= */
+
+.calculator-photo-badge {
+  position: absolute;
+  right: 24px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 14px;
+  padding: 12px 16px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+  z-index: 3;
+  backdrop-filter: blur(8px);
+}
+
+.calculator-photo-badge-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 9px;
+  background: var(--navy-950);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+}
+
+.calculator-photo-badge-value {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--navy-950);
+  line-height: 1.1;
+}
+
+.calculator-photo-badge-label {
+  font-size: 11px;
+  color: #B40023;
+  margin-top: 3px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .calculator-visual-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    background: var(--white);
+    overflow: hidden;
+  }
+
+  .calculator-copy {
+    min-height: 320px;
+    padding: 38px 35px;
+    border-radius: 22px 22px 0 0;
+  }
+
+  .calculator-copy::after,
+  .calculator-copy::before {
+    display: none;
+  }
+
+  .calculator-photo {
+    min-height: 280px;
+    height: 280px;
+    border-radius: 0;
+  }
+
+  .calculator-photo-badge {
+    right: 20px;
+    bottom: 20px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  #calculator-section {
+    padding: 55px 0;
+  }
+
+  .calculator-visual-grid {
+    margin-top: 25px;
+    border-radius: 18px;
+  }
+
+  .calculator-copy {
+    min-height: auto;
+    padding: 30px 22px 34px;
+    border-radius: 18px 18px 0 0;
+  }
+
+  .calculator-copy .section-head h2 {
+    font-size: 24px;
+  }
+
+  .calculator-copy .section-head p {
+    font-size: 14px;
+  }
+
+  .calculator-photo {
+    height: 240px;
+    min-height: 240px;
+  }
+
+  .calculator-photo-badge {
+    left: 14px;
+    right: auto;
+    bottom: 14px;
+    padding: 10px 13px;
+  }
+
+  .calculator-photo-badge-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 10px;
+  }
+
+  .calculator-photo-badge-value {
+    font-size: 16px;
+  }
+
+  .calculator-photo-badge-label {
+    font-size: 10px;
+  }
+
+  #calculator-section .hero-actions {
+    flex-direction: column;
+  }
+
+  #calculator-section .hero-actions .btn {
+    width: 100%;
+  }
+}

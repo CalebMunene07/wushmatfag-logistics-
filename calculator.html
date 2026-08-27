@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WUSHMAT FAG LTD customs clearance and forwarding calculator for vehicle imports, general cargo and HS code lookup.">
+    <title>Clearing &amp; Forwarding Calculator | WUSHMAT FAG LTD</title>
+    <link rel="stylesheet" href="css/style(2).css">
+    <script src="js/clearing.js"></script>
+</head>
+<body>
+<!-- HERO -->
+<header class="hero">
+    <!-- ⬇ PUT YOUR HERO IMAGE HERE — just change the src -->
+    <img src="images/1.jpg" alt="" class="hero-bg-img" onerror="this.style.display='none'">
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+        <div class="hero-copy">
+            <span class="eyebrow">WUSHMAT FAG LTD</span>
+            <h1>Clearer import costs.<br><span>Better decisions.</span></h1>
+            <p>Estimate customs duties, levies and clearing charges before you proceed with your shipment.</p>
+            <div class="hero-pills">
+                <span class="pill">Instant Estimates</span>
+                <span class="pill">M-Pesa Payment</span>
+                <span class="pill">PDF Invoice</span>
+                <span class="pill">2026 Rates</span>
+            </div>
+        </div>
+        <div class="hero-side-card">
+            <span class="hero-side-kicker">HOW IT WORKS</span>
+            <h2>Calculate in three steps</h2>
+            <div class="hero-side-line"><b>01</b><span>Select Vehicle, Cargo or HS Lookup</span></div>
+            <div class="hero-side-line"><b>02</b><span>Enter your shipment information</span></div>
+            <div class="hero-side-line"><b>03</b><span>Review your estimate and payment options</span></div>
+        </div>
+    </div>
+</header>
+
+<!-- CALCULATOR CARD -->
+
+<section class="customer-guide" aria-label="Customer guide">
+    <div class="guide-label">CUSTOMER GUIDE</div>
+    <h2>Know what you need before you calculate</h2>
+    <p class="guide-intro">
+        Use the calculator that matches your shipment. Enter accurate values from your
+        shipping or vehicle documents to get a working estimate.
+    </p>
+
+    <div class="guide-step">
+        <span class="guide-number">01</span>
+        <div>
+            <h3>Choose a service</h3>
+            <p>Vehicle for motor imports, Cargo for general goods, or HS Lookup when you need to identify a product classification.</p>
+        </div>
+    </div>
+
+    <div class="guide-step">
+        <span class="guide-number">02</span>
+        <div>
+            <h3>Enter your details</h3>
+            <p>Provide the consignee information and the CIF value shown on your relevant shipping documentation.</p>
+        </div>
+    </div>
+
+    <div class="guide-step">
+        <span class="guide-number">03</span>
+        <div>
+            <h3>Review the estimate</h3>
+            <p>The result separates duties, levies and clearing charges so you can understand what contributes to the total.</p>
+        </div>
+    </div>
+
+    <div class="guide-note">
+        <strong>Important</strong>
+        This calculator provides an estimate. Final charges and tax treatment are subject to the applicable assessment and supporting documents.
+    </div>
+
+    <div class="guide-contact">
+        <span>Need help?</span>
+        <strong>Contact WUSHMAT FAG LTD</strong>
+        <small>Eldoret, Kenya · Clearing &amp; Forwarding Services</small>
+    </div>
+</section>
+
+<div class="calculator-shell">
+<div class="wrap">
+<div class="card">
+
+    <!-- TAB BUTTONS -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('vehicle',this)">
+            <span class="tab-icon"></span>Vehicle
+        </button>
+        <button class="tab-btn" onclick="switchTab('cargo',this)">
+            <span class="tab-icon"></span>Cargo
+        </button>
+        <button class="tab-btn" onclick="switchTab('hs',this)">
+            <span class="tab-icon"></span>HS Lookup
+        </button>
+    </div>
+
+    <!-- ============================================================ -->
+    <!--  VEHICLE PANE                                                -->
+    <!-- ============================================================ -->
+    <div id="pane-vehicle" class="pane active">
+        <div class="form-side">
+            <div class="notice"><strong>Motor Vehicles</strong>Date of first registration: Enter <em>1st Jan</em> for direct imports and <em>31st Dec</em> for previously registered. Updated with 2026 KRA CRSP values.</div>
+
+            <!-- Contact -->
+            <div class="field"><label>Consignee / Importer </label><input id="v_name" type="text" placeholder="Full name or company"></div>
+            <div class="row2">
+                <div class="field"><label>Email </label><input id="v_email" type="email" placeholder="you@email.com"></div>
+                <div class="field"><label>Phone (M-Pesa) </label><input id="v_phone" type="tel" placeholder="+254712345678"></div>
+            </div>
+
+            <!-- Vehicle Details -->
+            <div class="field">
+                <label>Vehicle Make </label>
+                <select id="v_make" onchange="loadModels()">
+                    <option value="">Select make...</option>
+                    <option>Toyota</option><option>Nissan</option><option>Honda</option><option>Mitsubishi</option>
+                    <option>Subaru</option><option>Mazda</option><option>Isuzu</option><option>Mercedes-Benz</option>
+                    <option>BMW</option><option>Volkswagen</option><option>Ford</option><option>Hyundai</option>
+                    <option>Kia</option><option>Land Rover</option><option>Suzuki</option><option>Lexus</option>
+                    <option>Volvo</option><option>Peugeot</option><option>Renault</option><option>Other</option>
+                </select>
+            </div>
+            <div class="field"><label>Vehicle Model </label><input id="v_model" type="text" placeholder="e.g. Hilux, Axio, Harrier"></div>
+
+            <div class="field">
+                <label>Body Type </label>
+                <select id="v_body" onchange="calcVehicle()">
+                    <option value="">Select body type...</option>
+                    <option value="sedan">Saloon / Sedan</option>
+                    <option value="hatchback">Hatchback</option>
+                    <option value="suv">SUV / 4WD / Jeep</option>
+                    <option value="station_wagon">Station Wagon</option>
+                    <option value="pickup">Pick-Up (Single / Double Cab)</option>
+                    <option value="minibus">Minibus / Matatu (Up to 25 seats)</option>
+                    <option value="bus">Bus (Above 25 seats)</option>
+                    <option value="truck">Truck / Lorry</option>
+                    <option value="trailer">Trailer / Semi-Trailer</option>
+                    <option value="motorcycle">Motorcycle / Scooter</option>
+                    <option value="tractor">Tractor / Agricultural Machine</option>
+                    <option value="ambulance">Ambulance / Special Purpose</option>
+                </select>
+            </div>
+
+            <div class="row2">
+                <div class="field">
+                    <label>Engine Capacity (cc) </label>
+                    <select id="v_cc" onchange="calcVehicle()">
+                        <option value="">Select CC...</option>
+                        <option value="660">Up to 660cc</option>
+                        <option value="1000">661 – 1000cc</option>
+                        <option value="1200">1001 – 1200cc</option>
+                        <option value="1500">1201 – 1500cc</option>
+                        <option value="1800">1501 – 1800cc</option>
+                        <option value="2000">1801 – 2000cc</option>
+                        <option value="2500">2001 – 2500cc</option>
+                        <option value="3000">2501 – 3000cc</option>
+                        <option value="3001">Above 3000cc</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Fuel Type </label>
+                    <select id="v_fuel" onchange="calcVehicle()">
+                        <option value="">Select fuel...</option>
+                        <option value="petrol">Petrol / Gasoline</option>
+                        <option value="diesel">Diesel</option>
+                        <option value="hybrid">Hybrid (Petrol)</option>
+                        <option value="electric">Electric (EV)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row2">
+                <div class="field">
+                    <label>Date of Manufacture </label>
+                    <input id="v_mfg" type="month" oninput="calcVehicle()" onchange="calcVehicle()">
+                </div>
+                <div class="field">
+                    <label>Date of First Registration </label>
+                    <input id="v_reg" type="month" oninput="calcVehicle()" onchange="calcVehicle()">
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Type of Entry </label>
+                <select id="v_entry" onchange="calcVehicle()">
+                    <option value="direct">Direct Import (New to Kenya)</option>
+                    <option value="prev">Previously Registered in Kenya (EX-GK / Diplomat)</option>
+                </select>
+            </div>
+
+            <div class="row2">
+                <div class="field pfx">
+                    <label>CIF Value (KES) </label>
+                    <span class="pfx-label">KES</span>
+                    <input id="v_cif" type="number" inputmode="numeric" placeholder="e.g. 2500000" min="0" step="1" oninput="calcVehicle()">
+                    <span class="field-hint">e.g. 2,500,000 for a mid-range SUV</span>
+                </div>
+                <div class="field">
+                    <label>Freight Mode</label>
+                    <select id="v_freight" onchange="calcVehicle()">
+                        <option value="roro">RoRo (Roll-on/Roll-off)</option>
+                        <option value="container">Container</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="notice notice-red"><strong>Calculator Fee</strong>KES 200 usage fee charged once per calculation &mdash; included in total below.</div>
+            <button class="btn btn-blue" id="v_pay" onclick="openPayModal('vehicle')" disabled>Proceed to Payment</button>
+        </div>
+
+        <!-- VEHICLE RESULTS -->
+        <div class="result-side">
+            <div class="result-title">Vehicle Duty Estimate</div>
+            <div id="v_empty" class="empty-state"><div class="empty-icon"></div><p>Complete the vehicle details to see your duty estimate</p></div>
+            <div id="v_results" style="display:none">
+                <div class="result-paywall">
+                    <div class="paywall-icon">🔒</div>
+                    <p class="paywall-title">Estimate ready</p>
+                    <p class="paywall-text">Complete secure payment to unlock the full duty &amp; levy breakdown and download your invoice.</p>
+                    <button type="button" class="btn btn-blue paywall-btn" onclick="openPayModal('vehicle')">Unlock Breakdown</button>
+                </div>
+                <div class="fc">
+                    <div class="fc-title">Vehicle Details</div>
+                    <div class="fc-row cif-row"><span>CRSP / CIF Value</span><span id="vr_cif">KES 0</span></div>
+                    <div class="fc-row"><span>Body Type</span><span id="vr_body">—</span></div>
+                    <div class="fc-row"><span>Engine / Fuel</span><span id="vr_eng">—</span></div>
+                    <div class="fc-row"><span>Depreciation Applied</span><span id="vr_dep">—</span></div>
+                    <div class="fc-row"><span>Customs Value (after depreciation)</span><span id="vr_custval">KES 0</span></div>
+                </div>
+                <div class="fc">
+                    <div class="fc-title">Duties &amp; Levies</div>
+                    <div class="fc-row"><span>Import Duty <span id="vr_duty_pct">0</span>%</span><span id="vr_duty">KES 0</span></div>
+                    <div class="fc-row"><span>Excise Duty <span id="vr_exc_pct">0</span>%</span><span id="vr_excise">KES 0</span></div>
+                    <div class="fc-row"><span>VAT 16%</span><span id="vr_vat">KES 0</span></div>
+                    <div class="fc-row"><span>IDF 2.5%</span><span id="vr_idf">KES 0</span></div>
+                    <div class="fc-row"><span>Railways Levy (RDL) 2%</span><span id="vr_rdl">KES 0</span></div>
+                </div>
+                <div class="fc">
+                    <div class="fc-title">Clearing &amp; Forwarding Charges</div>
+                    <div class="fc-row"><span>C&amp;F Commission (5%)</span><span id="vr_cf">KES 0</span></div>
+                    <div class="fc-row"><span>Documentation Fee</span><span>KES 8,000</span></div>
+                    <div class="fc-row"><span>Vehicle Inspection</span><span>KES 5,000</span></div>
+                    <div class="fc-row"><span class="fc-fee">Calculator Fee</span><span class="fc-fee">KES 200</span></div>
+                </div>
+                <div class="total-box">
+                    <div class="label">Estimated Total (KES)</div>
+                    <div class="amount" id="vr_total">0.00</div>
+                    <div class="sub">Estimate only &mdash; subject to KRA assessment at port. Only the KES 200 calculator fee is charged now.</div>
+                </div>
+                <p class="quote-cta">Need us to actually clear this shipment? <a href="quote.html">Get a formal quote &rarr;</a></p>
+                <div class="btns">
+                    <button class="btn btn-red" onclick="resetPane('vehicle')">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- /vehicle pane -->
+
+    <!-- ============================================================ -->
+    <!--  CARGO PANE                                                   -->
+    <!-- ============================================================ -->
+    <div id="pane-cargo" class="pane">
+        <div class="form-side">
+            <div class="notice"><strong> General Cargo</strong>Calculates import duty, excise, VAT, IDF and RDL on CIF value using EAC 2026 Common External Tariff bands.</div>
+
+            <div class="field"><label>Consignee / Importer </label><input id="c_name" type="text" placeholder="Full name or company"></div>
+            <div class="row2">
+                <div class="field"><label>Email </label><input id="c_email" type="email" placeholder="you@email.com"></div>
+                <div class="field"><label>Phone (M-Pesa) </label><input id="c_phone" type="tel" placeholder="+254712345678"></div>
+            </div>
+
+            <div class="field">
+                <label>Cargo Category </label>
+                <select id="c_cat" onchange="calcCargo()">
+                    <option value="">Select category...</option>
+                    <optgroup label="EAC Band 1 – Raw Materials (0%)">
+                        <option value="raw_materials">Raw Materials (0%)</option>
+                        <option value="fertilisers">Fertilisers &amp; Agricultural Inputs (0%)</option>
+                        <option value="capital_equipment">Capital Equipment &amp; Machinery (0%)</option>
+                    </optgroup>
+                    <optgroup label="EAC Band 2 – Intermediate Goods (10%)">
+                        <option value="intermediate">Semi-Finished / Intermediate Goods (10%)</option>
+                        <option value="spare_parts">Spare Parts &amp; Components (10%)</option>
+                        <option value="metals">Metals &amp; Metal Products (10%)</option>
+                        <option value="paper">Paper &amp; Paper Products (10%)</option>
+                        <option value="chemicals">Industrial Chemicals (10%)</option>
+                        <option value="pharma">Pharmaceuticals &amp; Medical Supplies (0%)</option>
+                    </optgroup>
+                    <optgroup label="EAC Band 3 – Finished Goods (25%)">
+                        <option value="electronics">Electronics &amp; Electrical Goods (25%)</option>
+                        <option value="phones">Mobile Phones (35% + 10% Excise)</option>
+                        <option value="computers">Computers &amp; Laptops (0%)</option>
+                        <option value="food">Food &amp; Beverages (25%)</option>
+                        <option value="furniture">Furniture &amp; Fixtures (25%)</option>
+                        <option value="plastics">Plastics &amp; Rubber Products (25%)</option>
+                        <option value="cosmetics">Cosmetics &amp; Toiletries (25%)</option>
+                        <option value="general">General Finished Goods (25%)</option>
+                    </optgroup>
+                    <optgroup label="EAC Band 4 – Sensitive Goods (35%)">
+                        <option value="textiles">Textiles &amp; Apparel (35%)</option>
+                        <option value="sugar">Sugar &amp; Confectionery (35%)</option>
+                        <option value="footwear">Footwear (35%)</option>
+                        <option value="iron_steel">Iron &amp; Steel (finished) (35%)</option>
+                        <option value="agricultural">Agricultural Produce (35%)</option>
+                    </optgroup>
+                    <optgroup label="Excisable Goods">
+                        <option value="alcohol">Alcohol &amp; Spirits (35% + 35% Excise)</option>
+                        <option value="tobacco">Tobacco &amp; Cigarettes (35% + 130% Excise)</option>
+                        <option value="vehicle_parts">Motor Vehicle Body Parts (25%)</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Country of Origin </label>
+                <select id="c_origin" onchange="calcCargo()">
+                    <option value="other">Other (Standard EAC CET rates apply)</option>
+                    <option value="eac">EAC Partner State (0% preferential)</option>
+                    <option value="comesa">COMESA Country (reduced rates)</option>
+                    <option value="uk">United Kingdom (EPTS agreement)</option>
+                    <option value="eu">European Union (EPA agreement)</option>
+                    <option value="china">China (Standard rates)</option>
+                    <option value="india">India (IKEPA – reduced rates)</option>
+                    <option value="usa">USA (Standard rates)</option>
+                    <option value="japan">Japan (Standard rates)</option>
+                    <option value="uae">UAE (Standard rates)</option>
+                </select>
+            </div>
+
+            <div class="row2">
+                <div class="field pfx">
+                    <label>CIF Value (KES) </label>
+                    <span class="pfx-label">KES</span>
+                    <input id="c_cif" type="number" inputmode="numeric" placeholder="e.g. 850000" min="0" step="1" oninput="calcCargo()">
+                    <span class="field-hint">e.g. 850,000 for a container of general goods</span>
+                </div>
+                <div class="field">
+                    <label>Quantity / Units</label>
+                    <input id="c_qty" type="number" placeholder="1" min="1" value="1" oninput="calcCargo()">
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Description of Goods</label>
+                <textarea id="c_desc" placeholder="Brief description of cargo contents"></textarea>
+            </div>
+
+            <div class="field">
+                <label>Freight Mode</label>
+                <select id="c_freight" onchange="calcCargo()">
+                    <option value="sea">Sea Freight</option>
+                    <option value="air">Air Freight</option>
+                    <option value="road">Road (Cross-border)</option>
+                </select>
+            </div>
+
+            <div class="notice notice-red"><strong>Calculator Fee</strong>KES 200 usage fee charged once per calculation &mdash; included in total below.</div>
+            <button class="btn btn-blue" id="c_pay" onclick="openPayModal('cargo')" disabled>Proceed to Payment</button>
+        </div>
+
+        <!-- CARGO RESULTS -->
+        <div class="result-side">
+            <div class="result-title">Cargo Duty Estimate</div>
+            <div id="c_empty" class="empty-state"><div class="empty-icon"></div><p>Select a category and enter the CIF value to calculate duties</p></div>
+            <div id="c_results" style="display:none">
+                <div class="result-paywall">
+                    <div class="paywall-icon">🔒</div>
+                    <p class="paywall-title">Estimate ready</p>
+                    <p class="paywall-text">Complete secure payment to unlock the full duty &amp; levy breakdown and download your invoice.</p>
+                    <button type="button" class="btn btn-blue paywall-btn" onclick="openPayModal('cargo')">Unlock Breakdown</button>
+                </div>
+                <div class="fc">
+                    <div class="fc-title">Cargo Details</div>
+                    <div class="fc-row cif-row"><span>CIF Value</span><span id="cr_cif">KES 0</span></div>
+                    <div class="fc-row"><span>Category</span><span id="cr_cat">—</span></div>
+                    <div class="fc-row"><span>Origin</span><span id="cr_origin">—</span></div>
+                </div>
+                <div class="fc">
+                    <div class="fc-title">Duties &amp; Levies</div>
+                    <div class="fc-row"><span>Import Duty <span id="cr_duty_pct">0</span>%</span><span id="cr_duty">KES 0</span></div>
+                    <div class="fc-row"><span>Excise Duty <span id="cr_exc_pct">0</span>%</span><span id="cr_excise">KES 0</span></div>
+                    <div class="fc-row"><span>VAT 16%</span><span id="cr_vat">KES 0</span></div>
+                    <div class="fc-row"><span>IDF <span id="cr_idf_pct">2.5</span>%</span><span id="cr_idf">KES 0</span></div>
+                    <div class="fc-row"><span>Railways Levy (RDL) <span id="cr_rdl_pct">2</span>%</span><span id="cr_rdl">KES 0</span></div>
+                </div>
+                <div class="fc">
+                    <div class="fc-title">Clearing &amp; Forwarding Charges</div>
+                    <div class="fc-row"><span>C&amp;F Commission (5%)</span><span id="cr_cf">KES 0</span></div>
+                    <div class="fc-row"><span>Documentation Fee</span><span>KES 5,000</span></div>
+                    <div class="fc-row"><span>Handling Fee</span><span>KES 3,000</span></div>
+                    <div class="fc-row"><span class="fc-fee">Calculator Fee</span><span class="fc-fee">KES 200</span></div>
+                </div>
+                <div class="total-box">
+                    <div class="label">Estimated Total (KES)</div>
+                    <div class="amount" id="cr_total">0.00</div>
+                    <div class="sub">Estimate only &mdash; confirm with your shipping documents. Only the KES 200 calculator fee is charged now.</div>
+                </div>
+                <p class="quote-cta">Need us to actually clear this shipment? <a href="quote.html">Get a formal quote &rarr;</a></p>
+                <div class="btns">
+                    <button class="btn btn-red" onclick="resetPane('cargo')">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- /cargo pane -->
+
+    <!-- ============================================================ -->
+    <!--  HS LOOKUP PANE                                              -->
+    <!-- ============================================================ -->
+    <div id="pane-hs" class="pane">
+        <div class="form-side">
+            <div class="notice"><strong>HS Code Lookup</strong>Search by product name or enter your 6/8-digit HS code. Uses EAC Common External Tariff 2026.</div>
+
+            <div class="field"><label>Consignee / Importer </label><input id="h_name" type="text" placeholder="Full name or company"></div>
+            <div class="row2">
+                <div class="field"><label>Email </label><input id="h_email" type="email" placeholder="you@email.com"></div>
+                <div class="field"><label>Phone (M-Pesa) </label><input id="h_phone" type="tel" placeholder="+254712345678"></div>
+            </div>
+
+            <div class="field hs-wrap">
+                <label>HS Code or Product Name </label>
+                <input id="h_code" type="text" placeholder="e.g. 8703.22 or &quot;passenger car petrol 1500cc&quot;" oninput="searchHS()" onblur="closeHS()" onfocus="searchHS()" autocomplete="off">
+                <div id="h_list" class="hs-list"></div>
+            </div>
+            <div class="field"><label>Selected Product Description</label><textarea id="h_desc" placeholder="Description auto-fills from HS lookup above..." rows="2" readonly></textarea></div>
+            <div class="row2">
+                <div class="field"><label>Import Duty Rate</label><input id="h_duty_rate" type="text" placeholder="—" readonly style="background:#f5f7fd;font-weight:700;color:var(--blue)"></div>
+                <div class="field"><label>Excise Duty Rate</label><input id="h_exc_rate" type="text" placeholder="—" readonly style="background:#f5f7fd;font-weight:700;color:var(--red)"></div>
+            </div>
+            <div class="row2">
+                <div class="field pfx">
+                    <label>CIF Value (KES) </label>
+                    <span class="pfx-label">KES</span>
+                    <input id="h_cif" type="number" inputmode="numeric" placeholder="e.g. 400000" min="0" step="1" oninput="calcHS()">
+                    <span class="field-hint">e.g. 400,000 for a small commercial shipment</span>
+                </div>
+                <div class="field">
+                    <label>Quantity</label>
+                    <input id="h_qty" type="number" placeholder="1" min="1" value="1" oninput="calcHS()">
+                </div>
+            </div>
+            <div class="notice notice-red"><strong>Calculator Fee</strong>KES 200 usage fee charged once per calculation &mdash; included in total below.</div>
+            <button class="btn btn-blue" id="h_pay" onclick="openPayModal('hs')" disabled>Proceed to Payment</button>
+        </div>
+
+        <!-- HS RESULTS -->
+        <div class="result-side">
+            <div class="result-title">HS Code Estimate</div>
+            <div id="h_empty" class="empty-state"><div class="empty-icon"></div><p>Search an HS code and enter the CIF value to see duties</p></div>
+            <div id="h_results" style="display:none">
+                <div class="result-paywall">
+                    <div class="paywall-icon">🔒</div>
+                    <p class="paywall-title">Estimate ready</p>
+                    <p class="paywall-text">Complete secure payment to unlock the full duty &amp; levy breakdown and download your invoice.</p>
+                    <button type="button" class="btn btn-blue paywall-btn" onclick="openPayModal('hs')">Unlock Breakdown</button>
+                </div>
+                <div class="fc">
+                    <div class="fc-title">HS Code Details</div>
+                    <div class="fc-row cif-row"><span id="hr_code_label">HS —</span><span id="hr_cif">KES 0</span></div>
+                    <div class="fc-row"><span>Description</span><span id="hr_desc" style="text-align:right;max-width:55%;font-size:.85em">—</span></div>
+                    <div class="fc-row"><span>EAC Chapter</span><span id="hr_chapter">—</span></div>
+                </div>
+                <div class="fc">
+                    <div class="fc-title">Duties &amp; Levies</div>
+                    <div class="fc-row"><span>Import Duty <span id="hr_duty_pct">0</span>%</span><span id="hr_duty">KES 0</span></div>
+                    <div class="fc-row"><span>Excise Duty <span id="hr_exc_pct">0</span>%</span><span id="hr_excise">KES 0</span></div>
+                    <div class="fc-row"><span>VAT 16%</span><span id="hr_vat">KES 0</span></div>
+                    <div class="fc-row"><span>IDF 2.5%</span><span id="hr_idf">KES 0</span></div>
+                    <div class="fc-row"><span>Railways Levy 2%</span><span id="hr_rdl">KES 0</span></div>
+                </div>
+                <div class="fc">
+                    <div class="fc-title">Clearing &amp; Forwarding Charges</div>
+                    <div class="fc-row"><span>C&amp;F Commission (5%)</span><span id="hr_cf">KES 0</span></div>
+                    <div class="fc-row"><span>Documentation Fee</span><span>KES 5,000</span></div>
+                    <div class="fc-row"><span>Handling Fee</span><span>KES 3,000</span></div>
+                    <div class="fc-row"><span class="fc-fee">Calculator Fee</span><span class="fc-fee">KES 200</span></div>
+                </div>
+                <div class="total-box">
+                    <div class="label">Estimated Total (KES)</div>
+                    <div class="amount" id="hr_total">0.00</div>
+                    <div class="sub">Estimate only &mdash; exact rate confirmed at KRA assessment. Only the KES 200 calculator fee is charged now.</div>
+                </div>
+                <p class="quote-cta">Need us to actually clear this shipment? <a href="quote.html">Get a formal quote &rarr;</a></p>
+                <div class="btns">
+                    <button class="btn btn-red" onclick="resetPane('hs')">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- /hs pane -->
+
+</div><!-- /card -->
+</div><!-- /wrap -->
+</div><!-- /calculator-shell -->
+
+<!-- ── PAYMENT CONFIRM MODAL ── -->
+<div class="overlay" id="modal-pay">
+<div class="mdialog">
+    <div class="mhead"><span class="mhead-title">Payment Confirmation</span><button class="mclose" onclick="closeModal('modal-pay')">Close</button></div>
+    <div class="mbody">
+        <div class="msumm">
+            <div class="mrow"><strong>Consignee:</strong><span id="mp_name">—</span></div>
+            <div class="mrow"><strong>Item:</strong><span id="mp_item">—</span></div>
+        </div>
+        <div class="msumm">
+            <div class="mrow"><span>Estimated Clearing Costs (not charged):</span><span id="mp_clearing">KES 0</span></div>
+            <div class="mrow total"><span>Calculator Fee — Pay Now:</span><span id="mp_total">KES 200</span></div>
+        </div>
+        <p style="font-size:.87em;color:var(--muted);line-height:1.6;margin-top:10px">
+             You're paying the KES 200 calculator fee only, to unlock your full duty &amp; levy breakdown.<br>
+             M-Pesa STK prompt will be sent to your phone<br>
+             Enter your PIN within 2 minutes<br>
+             PDF invoice emailed immediately after payment<br>
+             Download available on the confirmation screen<br>
+             Want us to handle the actual clearing (including these charges)? <a href="quote.html">Request a formal quote</a>.
+        </p>
+    </div>
+    <div class="mfooter">
+        <button class="btn" style="background:#eee;color:#333" onclick="closeModal('modal-pay')">Cancel</button>
+        <button class="btn btn-blue" onclick="initiatePayment()">Confirm &amp; Pay</button>
+    </div>
+</div>
+</div>
+
+<!-- ── PROCESSING MODAL ── -->
+<div class="overlay" id="modal-proc">
+<div class="mdialog" style="text-align:center;padding:40px 24px">
+    <div class="spinner"></div>
+    <h3 style="color:var(--blue);margin-top:16px">Processing Payment</h3>
+    <p style="color:var(--muted);margin-top:8px;font-size:.9em">Please wait while we send your M-Pesa prompt...</p>
+</div>
+</div>
+
+<!-- ── SUCCESS MODAL ── -->
+<div class="overlay" id="modal-ok">
+<div class="mdialog">
+    <div class="mhead"><span class="mhead-title">Payment Confirmed</span><button class="mclose" onclick="closeModal('modal-ok')">Close</button></div>
+    <div class="mbody">
+        <div class="msumm" style="text-align:center">
+            <div style="font-size:2.8em;margin-bottom:8px">Confirmed</div>
+            <div class="mrow total" style="justify-content:center"><span id="ok_total" style="color:var(--red);font-size:1.2em">KES 200</span></div>
+        </div>
+        <p style="font-size:.9em;color:var(--muted);margin-top:14px">Calculator fee received — invoice sent to <strong id="ok_email">—</strong>.<br>Your full duty &amp; levy breakdown is now unlocked below. Download your PDF or check your email.<br>Ready to actually clear this shipment? <a href="quote.html">Get a formal quote</a>.</p>
+    </div>
+    <div class="mfooter" style="flex-direction:column;gap:8px">
+        <button class="btn btn-blue" onclick="downloadPDF()" style="width:100%">Download PDF Invoice</button>
+        <button class="btn btn-red" onclick="closeModal('modal-ok');location.reload()" style="width:100%">Close &amp; Reset</button>
+    </div>
+</div>
+</div>
+
+<!-- ── TOAST ── -->
+<div class="toast" id="toast"></div>
+
+<!-- ── COMPACT FOOTER ── -->
+<footer class="mini-footer">
+    <div class="mini-footer-inner">
+        <span class="mini-footer-brand">WUSHMAT FAG LTD</span>
+        <nav class="mini-footer-links">
+            <a href="index.html">Home</a>
+            <a href="quote.html">Get a Quote</a>
+            <a href="track.html">Track &amp; Trace</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <span class="mini-footer-copy">&copy; <span id="mini-footer-year"></span> WUSHMAT FAG LTD</span>
+    </div>
+</footer>
+<script>document.getElementById('mini-footer-year').textContent = new Date().getFullYear();</script>
+
+<script src="script.js"></script>
+</body>
+</html>
