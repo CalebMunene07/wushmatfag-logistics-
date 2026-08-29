@@ -449,6 +449,8 @@ function calcHS() {
 // ─────────────────────────────────────────────
 //  PAYMENT FLOW
 // ─────────────────────────────────────────────
+let currentItemLabel = ''; // set in openPayModal, sent to clearing-stk-push in initiatePayment
+
 function openPayModal(tab) {
     const ids = { vehicle:['v_name','v_email','v_phone'], cargo:['c_name','c_email','c_phone'], hs:['h_name','h_email','h_phone'] };
     const [nameId, emailId, phoneId] = ids[tab];
@@ -473,6 +475,7 @@ function openPayModal(tab) {
         cargo:   document.getElementById('c_cat').options[document.getElementById('c_cat').selectedIndex]?.text || 'Cargo',
         hs:      selectedHS ? selectedHS.code + ' – ' + selectedHS.desc : 'HS Code Cargo'
     }[tab];
+    currentItemLabel = itemLabel;
  
     set('mp_name', name);
     set('mp_item', itemLabel);
@@ -490,6 +493,27 @@ async function initiatePayment() {
     const name  = document.getElementById(nameId).value.trim();
     const email = document.getElementById(emailId).value.trim();
     const phone = document.getElementById(phoneId).value.trim();
+    const c = currentCalc; // the full computed estimate for whichever tab is active
+
+    // Map the tab-specific fee lines onto the fixed clearing_payments
+    // columns, so the admin dashboard can read a real itemized
+    // breakdown instead of recomputing (and getting it wrong).
+    const docFee = tab === 'vehicle' ? 8000 : 5000;
+    const inspFee = tab === 'vehicle' ? 5000 : 3000;
+    const breakdown = {
+        cif_value: c.cif,
+        customs_value: tab === 'vehicle' ? c.customsVal : null,
+        import_duty: c.duty,
+        excise_duty: c.excise || 0,
+        vat_amount: c.vat,
+        idf_amount: c.idf,
+        rdl_amount: c.rdl,
+        cf_commission: c.cf,
+        documentation_fee: docFee,
+        handling_or_inspection_fee: inspFee,
+        calculator_fee: CALC_FEE,
+        estimated_total: c.total, // informational only — NOT what's charged
+    };
  
     try {
         const res = await fetch(`${SB_URL}/functions/v1/clearing-stk-push`, {
@@ -501,7 +525,15 @@ async function initiatePayment() {
                 description: 'WUSHMAT Clearing & Forwarding Calculator Fee',
                 account_reference: `WM-${Date.now()}`,
                 transaction_desc: `${tab.toUpperCase()} calculator fee`,
-                metadata: { consignee_name:name, email, calc_type:tab, total:currentCalc.total, amount_charged:CALC_FEE }
+                metadata: {
+                    consignee_name: name,
+                    email,
+                    calc_type: tab,
+                    item_description: currentItemLabel,
+                    total: c.total,
+                    amount_charged: CALC_FEE,
+                    breakdown,
+                }
             })
         });
         const data = await res.json();
